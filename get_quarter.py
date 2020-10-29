@@ -5,7 +5,8 @@ class GetQuarter:
 
     def __init__(self, date):
         self.date = date 
-    
+        
+        
     # Instance method
     def dayOfQuarter(self):
         # Jan
@@ -65,5 +66,33 @@ class GetQuarter:
                 int(doq)
                 return doq + 1
 
+        else:
+            print("something went wrong")
+
+    def quarter(self):
+                # Jan
+        q1 = datetime.datetime(self.date.year,1,1)
+        # April
+        q2 = datetime.datetime(self.date.year,4,1) 
+        # July
+        q3 = datetime.datetime(self.date.year,7,1)
+        # Oct
+        q4 = datetime.datetime(self.date.year,10,1) 
+
+        # TODO: find a way to return the quarter    
+        # determin is quarter is not null if so return the quarter
+
+        if(q2 > self.date >= q1):
+           return 1 
+            
+        elif(q3 > self.date >= q2):
+            return 2
+            
+        elif(q4 > self.date >= q3):
+            return 3
+            
+        elif(self.date >= q4):
+            return 4
+            
         else:
             print("something went wrong")
