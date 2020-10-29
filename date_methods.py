@@ -110,3 +110,8 @@ def monthDayYear(date):
 def monthNameDayYear(date):
     mndy = date.strftime("%B %d, %Y")
     return mndy 
+
+# dayYear A field combining dayOfYear and the current year, separated by a / (92/2020 for April 1, 2020) 
+def dayYear(date):
+    dayYear = dayOfYear(date)+"/"+date.strftime("%Y")
+    return dayYear
