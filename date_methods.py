@@ -85,3 +85,9 @@ def dayOfQuarter(date):
 
     else:
         print("something went wrong")
+
+# A numerical value starting at 1 on January 1 and ending at 365/6 on December 31 (92 for April 1, 2020)
+def dayOfYear(date):
+    doy = date.strftime("%-j")
+    return doy 
+
