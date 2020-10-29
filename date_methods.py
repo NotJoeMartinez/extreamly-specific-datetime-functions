@@ -71,3 +71,22 @@ def dateType(date):
 def fullDate(date):
     fulldate = date.strftime("%y-%m-%d %h:%m:%s.%f") 
     return fulldate[:-3]
+
+
+def day(date):
+    day = date.strftime("%-d")
+    return day 
+
+def dayName(date):
+    dayName = date.strftime("%A")
+    return dayName
+
+def calDayOfWeek(date):
+    calDayofWeek = int(date.strftime("%w")) + 1
+    return calDayofWeek
+
+
+def nonCalDayOfWeek(date):
+    nonCalDayOfWeek = ((int(date.strftime("%j")) - 1 ) % 7 ) + 1
+    return nonCalDayOfWeek
+
