@@ -95,3 +95,8 @@ def dayOfYear(date):
 def monthDay(date):
     md = date.strftime("%-m/%-d")
     return md
+
+# A yearless date in the format of monthName day (April 01) 
+def monthNameDay(date):
+    mnd = date.strftime("%B %d")
+    return mnd

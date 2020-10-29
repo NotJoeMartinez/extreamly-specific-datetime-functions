@@ -58,9 +58,15 @@ for date in dates_generated:
     # dayOfQuarter
     dayOfQuarter = date_methods.dayOfQuarter(date)
     sub_rows.append(dayOfQuarter)
+
     # dayOfYear
     dayofyear = date_methods.dayOfYear(date)
     sub_rows.append(dayofyear)
+
+    # monthNameDay
+    monthdayname = date_methods.monthNameDay(date)
+    sub_rows.append(monthdayname)
+
     
     #### array manipulation ends here #### 
     #append to rows in row 19    
