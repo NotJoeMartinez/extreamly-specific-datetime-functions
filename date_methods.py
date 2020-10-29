@@ -91,3 +91,6 @@ def dayOfYear(date):
     doy = date.strftime("%-j")
     return doy 
 
+def monthDay(date):
+    md = date.strftime("%-m/%-d")
+    return md
