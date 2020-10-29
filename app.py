@@ -67,6 +67,9 @@ for date in dates_generated:
     monthdayname = date_methods.monthNameDay(date)
     sub_rows.append(monthdayname)
 
+    # monthDayYear
+    mdy = date_methods.monthDayYear(date)
+    sub_rows.append(mdy)
     
     #### array manipulation ends here #### 
     #append to rows in row 19    

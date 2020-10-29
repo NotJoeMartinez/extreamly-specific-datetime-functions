@@ -8,5 +8,5 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 for date in dates_generated:
-    monthnameday = date_methods.monthNameDay(date)
-    print(monthnameday)
+    foo = date_methods.monthDayYear(date)
+    print(foo)
