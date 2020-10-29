@@ -70,6 +70,10 @@ for date in dates_generated:
     # monthDayYear
     mdy = date_methods.monthDayYear(date)
     sub_rows.append(mdy)
+
+    # monthNameDayYear
+    mndy = date_methods.monthNameDayYear(date)
+    sub_rows.append(mndy)
     
     #### array manipulation ends here #### 
     #append to rows in row 19    

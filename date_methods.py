@@ -105,3 +105,8 @@ def monthNameDay(date):
 def monthDayYear(date):
     mdy = date.strftime("%-m/%-d/%Y")
     return mdy
+
+# monthNameDayYear A date in the format of monthName day, year (April 01, 2020) 
+def monthNameDayYear(date):
+    mndy = date.strftime("%B %d, %Y")
+    return mndy 
