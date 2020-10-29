@@ -1,7 +1,7 @@
 import datetime
 
 def dateId(date):
-    dateId = date.strftime("%y-%m-%d")
+    dateId = date.strftime("%Y%m%d")
     return dateId
 
 def dateType(date):
