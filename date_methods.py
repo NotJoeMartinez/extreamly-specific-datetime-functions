@@ -1,32 +1,42 @@
 import datetime
 
+# Date in the format of yearMonthDay (example 20200401 is April 1, 2020)
 def dateId(date):
     dateId = date.strftime("%Y%m%d")
     return dateId
 
+# This column is 'Date' for all rows
 def dateType(date):
     return "date"
 
+# Standard SQL datetime value in the format of year-month-day 00:00:00.000 (2020-04-01 00:00:00.000)
 def fullDate(date):
     fulldate = date.strftime("%Y-%m-%d %H:%M:%S.%f") 
     return fulldate[:-3]
 
+# Numerical value of the day of the month (1 for April 1, 2020)
 def day(date):
     day = date.strftime("%-d")
     return day 
 
+#  Name of day of the week (Wednesday for April 1, 2020)
 def dayName(date):
     dayName = date.strftime("%A")
     return dayName
 
+# Numerical representation for day of the week (4 for Wednesday, April 1, 2020)
 def calDayOfWeek(date):
     calDayofWeek = int(date.strftime("%w")) + 1
     return calDayofWeek
 
+# This is a numerical value that starts at 1 for January 1 of a given year and increments up to 7 before going back to 1. 
+# The value is 1 for January 1, 2020, even though the date was a Wednesday (which should have a value of 4). A week here 
+# seems to be defined as groups of 7 days starting with 1/1. (1 for for April 1, 2020) 
 def nonCalDayOfWeek(date):
     nonCalDayOfWeek = ((int(date.strftime("%j")) - 1 ) % 7 ) + 1
     return nonCalDayOfWeek
 
+# A numerical value starting at 1 on January 1, April 1, July 1, and October 1, incrementing up until the first day of the next quarter is reached. 
 def dayOfQuarter(date):
     # Jan
     q1 = datetime.datetime(date.year,1,1)
