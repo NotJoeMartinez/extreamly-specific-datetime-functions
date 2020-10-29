@@ -37,7 +37,7 @@ def nonCalDayOfWeek(date):
     return nonCalDayOfWeek
 
 # A numerical value starting at 1 on January 1, April 1, July 1, and October 1, incrementing up until the first day of the next quarter is reached. 
-def dayOfQuarter(date):
+def dayOfQuarter(date, quarter=""): 
     # Jan
     q1 = datetime.datetime(date.year,1,1)
     # April
@@ -47,6 +47,8 @@ def dayOfQuarter(date):
     # Oct
     q4 = datetime.datetime(date.year,10,1) 
 
+    # TODO: find a way to return the quarter    
+    # determin is quarter is not null if so return the quarter
 
     if(q2 > date >= q1):
         # check to see if date is equal to q1
@@ -125,3 +127,7 @@ def monthNameDayYear(date):
 def dayYear(date):
     dayYear = dayOfYear(date)+"/"+date.strftime("%Y")
     return dayYear
+# yearQuarterMonthWeekDay A numerical value concatenating the year, quarter, month, noncalendarWeekOfMonth, and day (2020204315 for April 15, 2020, 
+# which is the 3rd noncalendar week of April, in the 2nd quarter) 
+# def yearQuarterMonthWeekDay(date):
+#     yearQuarterMonthWeekDay = date. 
