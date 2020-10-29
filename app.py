@@ -63,6 +63,10 @@ for date in dates_generated:
     dayofyear = date_methods.dayOfYear(date)
     sub_rows.append(dayofyear)
 
+    # monthDay 
+    monthDay = date_methods.monthDay(date)
+    sub_rows.append(monthDay)
+
     # monthNameDay
     monthdayname = date_methods.monthNameDay(date)
     sub_rows.append(monthdayname)
