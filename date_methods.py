@@ -1,5 +1,5 @@
-import datetime
-
+import datetime, math
+from get_quarter import GetQuarter
 # Date in the format of yearMonthDay (example 20200401 is April 1, 2020)
 def dateId(date):
     dateId = date.strftime("%Y%m%d")
@@ -127,7 +127,24 @@ def monthNameDayYear(date):
 def dayYear(date):
     dayYear = dayOfYear(date)+"/"+date.strftime("%Y")
     return dayYear
-# yearQuarterMonthWeekDay A numerical value concatenating the year, quarter, month, noncalendarWeekOfMonth, and day (2020204315 for April 15, 2020, 
+
+
+# yearQuarterMonthWeekDay A numerical value concatenating the 
+# year, quarter, month, noncalendarWeekOfMonth, and day (2020204315 for April 15, 2020, 
 # which is the 3rd noncalendar week of April, in the 2nd quarter) 
-# def yearQuarterMonthWeekDay(date):
-#     yearQuarterMonthWeekDay = date. 
+def yearQuarterMonthWeekDay(date):
+    # year
+    year = date.strftime("%Y")
+    # quarter
+    quart = GetQuarter(date)
+    quart = quart.quarter()
+    # month 
+    month = date.strftime("%m")
+    # day of month 
+    day = date.strftime("%d") 
+    # week of month
+    week = math.ceil(int(day)/7)
+
+    # yeet = y + str(q) + m + str(wom) + d 
+    return "{}{}{}{}{}".format(year,quart,month,week,day) 
+    # return yeet

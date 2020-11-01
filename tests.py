@@ -9,5 +9,4 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 for date in dates_generated:
-    foo = GetQuarter(date)
-    print(foo.quarter())
+    print(date_methods.yearQuarterMonthWeekDay(date))

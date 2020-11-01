@@ -83,6 +83,8 @@ for date in dates_generated:
     dayYear = date_methods.dayYear(date)
     sub_rows.append(dayYear)
     
+    yearQuarterMonthWeekDay = date_methods.yearQuarterMonthWeekDay(date)
+    sub_rows.append(yearQuarterMonthWeekDay)
     #### array manipulation ends here #### 
     #append to rows in row 19    
     rows.append(sub_rows)
