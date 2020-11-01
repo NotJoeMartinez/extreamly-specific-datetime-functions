@@ -13,7 +13,7 @@
 - [x] monthNameDayYear
 - [x] dayYear
 - [x] yearQuarterMonthWeekDay
-- [ ] dayFrom1900
+- [x] dayFrom1900
 - [ ] calendarWeekOfMonth
 - [ ] noncalendarWeekOfMonth
 - [ ] calendarWeekOfQuarter

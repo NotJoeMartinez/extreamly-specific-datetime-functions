@@ -145,6 +145,16 @@ def yearQuarterMonthWeekDay(date):
     # week of month
     week = math.ceil(int(day)/7)
 
-    # yeet = y + str(q) + m + str(wom) + d 
     return "{}{}{}{}{}".format(year,quart,month,week,day) 
-    # return yeet
+
+# dayFrom1900
+# A numerical value counting days up from 1/1/1900 (43922 for April 1, 2020)
+# for some reason this is offset by three days from by sample data
+def dayFrom1900(date):
+    # date time object set at 1900
+    nineteen = datetime.datetime(1900,1,1)
+
+    # subtract nineteen from current datetime object
+    daysfrom = date - nineteen
+
+    return daysfrom.days

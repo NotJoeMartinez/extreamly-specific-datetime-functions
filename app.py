@@ -82,9 +82,15 @@ for date in dates_generated:
     # dayYear 
     dayYear = date_methods.dayYear(date)
     sub_rows.append(dayYear)
-    
+
+    # yearQuarterMonthWeekDay 
     yearQuarterMonthWeekDay = date_methods.yearQuarterMonthWeekDay(date)
     sub_rows.append(yearQuarterMonthWeekDay)
+
+    # days from 1900
+    dayFrom1900 = date_methods.dayFrom1900(date)
+    sub_rows.append(dayFrom1900)
+    
     #### array manipulation ends here #### 
     #append to rows in row 19    
     rows.append(sub_rows)
