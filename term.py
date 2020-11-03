@@ -21,7 +21,19 @@ import datetime
 
 def which_term(date):
     # starting at jan 1 1900 make a counter that moves up every 
-    start = datetime.datetime(1900,1,1)
+    count = 0
 
-    delta = date - start
-    return delta
+    start = datetime.datetime(1900,1,1)
+    end = date
+
+    dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
+
+    return "{}, {}".format(len(dates_generated),type(dates_generated[23]))
+    # for i in dates_generated:
+        
+        # if (i >= start):
+            # return count
+
+
+    
+print(which_term(datetime.datetime(2020,1,1)))
