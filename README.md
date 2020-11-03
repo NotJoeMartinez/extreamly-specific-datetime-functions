@@ -18,7 +18,7 @@
 - [x] noncalendarWeekOfMonth
 - [ ] calendarWeekOfQuarter
 - [ ] noncalendarWeekOfQuarter
-- [ ] calendarWeekOfYear
+- [x] calendarWeekOfYear
 - [ ] noncalendarWeekOfYear
 - [ ] yearQuarterMonthWeek
 - [x] month
