@@ -39,8 +39,12 @@ def which_term(date):
         if any(d_index in s for s in term_strs):
             term +=1
             print(term,d_index)
+        # print(i)
+        if(i+1 >= len(dates_generated)):
+            break
+        i+=1
 
-        i += 1
+
         
     
     pass
@@ -50,4 +54,4 @@ def which_term(date):
 
 
     
-print(which_term(datetime.datetime(2020,1,1)))
+print(which_term(datetime.datetime(1901,1,1)))
