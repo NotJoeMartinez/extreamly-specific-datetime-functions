@@ -140,8 +140,10 @@ def calendarWeekOfQuarter(date):
     pass 
 
 # 22
+# A numerical value counting full weeks in a given year. If a year starts on a day 
+# other than Sunday, this value will be 0 until the first Sunday of a year, where it will start with 1. (13 for April 1, 2020) 
 def calendarWeekOfYear(date):
-    pass
+    return date.strftime("%-U")
 
 # 23 
 def yearQuarterMonthWeek(date):
