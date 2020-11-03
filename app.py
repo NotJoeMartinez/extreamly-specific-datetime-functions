@@ -94,6 +94,10 @@ for date in dates_generated:
     # calWeekOfMonth
     calWeekOfMonth = date_methods.calWeekOfMonth(date)
     sub_rows.append(calWeekOfMonth)
+
+    # nonCalWeekOfMonth
+    nonCalWeekOfMonth = date_methods.nonCalWeekOfMonth(date)
+    sub_rows.append(nonCalWeekOfMonth)
     #### array manipulation ends here #### 
     #append to rows in row 19    
     rows.append(sub_rows)

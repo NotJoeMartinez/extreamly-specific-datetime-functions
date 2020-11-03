@@ -119,3 +119,13 @@ def calWeekOfMonth(date):
         return(week_of_month)
     
     return get_week_of_month(date.year,date.month,date.day)
+
+
+# nonCalendarWeekOfMOnth
+# A numerical value counting weeks in a given month, with the first day of the month having a value of 1 regardless of when the month starts. (1 for April 1, 2020) 
+def nonCalWeekOfMonth(date):
+    day = date.strftime("%d")
+    week = math.ceil(int(day)/7)
+    return week
+
+
