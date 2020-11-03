@@ -18,8 +18,6 @@ class GetQuarter:
         # Oct
         q4 = datetime.datetime(self.date.year,10,1) 
 
-        # TODO: find a way to return the quarter    
-        # determin is quarter is not null if so return the quarter
 
         if(q2 > self.date >= q1):
             # check to see if date is equal to q1

@@ -1,5 +1,8 @@
 import datetime, math
 from get_quarter import GetQuarter
+import calendar
+import numpy as np
+
 # Date in the format of yearMonthDay (example 20200401 is April 1, 2020)
 def dateId(date):
     dateId = date.strftime("%Y%m%d")
@@ -102,15 +105,17 @@ def dayFrom1900(date):
 
     return daysfrom.days
 
+
 # calendarWeekOfMonth
 # A numerical value counting full weeks in a given month. If a month starts on a day other than Sunday, this value will be 0 until 
 # the first Sunday of a month, where it will start with 1. (0 for April 1, 2020)
 def calWeekOfMonth(date):
-    dayNum = date.strftime("%d")
-    dayName = date.strftime("%a")
-
-    if (dayNum=="01" and dayName=="Sun"):
-        return "{}\t{}".format(calWeek, date)
-    else:
-        return "{}\t{}".format(math.floor(int(dayNum)/7),date)
+    # https://stackoverflow.com/questions/3806473/python-week-number-of-the-month
+    calendar.setfirstweekday(6)
+    def get_week_of_month(year, month, day):
+        x = np.array(calendar.monthcalendar(year, month))
+        week_of_month = np.where(x==day)[0][0] 
+        
+        return(week_of_month)
     
+    return get_week_of_month(date.year,date.month,date.day)

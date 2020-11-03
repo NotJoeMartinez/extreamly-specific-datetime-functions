@@ -91,6 +91,9 @@ for date in dates_generated:
     dayFrom1900 = date_methods.dayFrom1900(date)
     sub_rows.append(dayFrom1900)
     
+    # calWeekOfMonth
+    calWeekOfMonth = date_methods.calWeekOfMonth(date)
+    sub_rows.append(calWeekOfMonth)
     #### array manipulation ends here #### 
     #append to rows in row 19    
     rows.append(sub_rows)
