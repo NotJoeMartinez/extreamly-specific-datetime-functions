@@ -94,3 +94,7 @@ class GetQuarter:
             
         else:
             print("something went wrong")
+        
+    
+    def calWeekOfQuarter():
+        pass

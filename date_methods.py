@@ -105,18 +105,18 @@ def dayFrom1900(date):
 
     return daysfrom.days
 
-
 # calendarWeekOfMonth
 # A numerical value counting full weeks in a given month. If a month starts on a day other than Sunday, this value will be 0 until 
 # the first Sunday of a month, where it will start with 1. (0 for April 1, 2020)
+
+# https://stackoverflow.com/questions/3806473/python-week-number-of-the-month
+def get_week_of_month(year, month, day):
+    x = np.array(calendar.monthcalendar(year, month))
+    week_of_month = np.where(x==day)[0][0] 
+    return(week_of_month)
+
 def calWeekOfMonth(date):
-    # https://stackoverflow.com/questions/3806473/python-week-number-of-the-month
     calendar.setfirstweekday(6)
-    def get_week_of_month(year, month, day):
-        x = np.array(calendar.monthcalendar(year, month))
-        week_of_month = np.where(x==day)[0][0] 
-        
-        return(week_of_month)
     
     return get_week_of_month(date.year,date.month,date.day)
 
@@ -129,3 +129,45 @@ def nonCalWeekOfMonth(date):
     return week
 
 
+# nonCalWeekOfQuarter 20
+# A numerical value counting full weeks in a given quarter. If a quarter starts on a day other than Sunday, 
+# this value will be 0 until the first Sunday of a quarter, where it will start with 1. (0 for April 1, 2020) 
+def calWeekOfQuarter(date):
+    pass
+
+# 21
+def calendarWeekOfQuarter(date):
+    pass 
+
+# 22
+def calendarWeekOfYear(date):
+    pass
+
+# 23 
+def yearQuarterMonthWeek(date):
+    pass
+
+# 24 
+def month(date):
+    return date.strftime("%-m")
+
+# 25
+def monthName(date):
+    return date.strftime("%B")
+
+# 26
+def monthOfQuarter(date):
+    pass
+
+# 27 
+def monthYear(date):
+   return date.strftime("%-m/%Y")
+
+# 28
+# Date in the format of monthName, year (April, 2020 for April 1, 2020) 
+def monthNameYear(date):
+    return date.strftime("%B, %Y")
+
+# 29
+def yearQuarterMonth(date):
+    pass
