@@ -9,4 +9,6 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 for date in dates_generated:
-    print(date_methods.calWeekOfMonth(date))
+    foo = date_methods.dayOfQuarter(date)
+    print(foo)
+    
