@@ -28,11 +28,25 @@ def which_term(date):
 
     dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
-    return "{}, {}".format(len(dates_generated),type(dates_generated[23]))
-    # for i in dates_generated:
+    term_strs = ["01-01","05-11","07-01","08-21"]
+    i = 0
+    term = 0
+    # if any("abc" in s for s in some_list):
+    # while(datetime.datetime(1901,1,1) > dates_generated[i]):
+    while(date>dates_generated[i]):
+        d_index = dates_generated[i].strftime("%m-%d") 
+        # print(d_index)
+        if any(d_index in s for s in term_strs):
+            term +=1
+            print(term,d_index)
+
+        i += 1
         
-        # if (i >= start):
-            # return count
+    
+    pass
+    # return "{}, {}".format(len(dates_generated),type(dates_generated[23]))
+
+        
 
 
     
