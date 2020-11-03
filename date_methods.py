@@ -158,3 +158,16 @@ def dayFrom1900(date):
     daysfrom = date - nineteen
 
     return daysfrom.days
+
+# calendarWeekOfMonth
+# A numerical value counting full weeks in a given month. If a month starts on a day other than Sunday, this value will be 0 until 
+# the first Sunday of a month, where it will start with 1. (0 for April 1, 2020)
+def calWeekOfMonth(date):
+    dayNum = date.strftime("%d")
+    dayName = date.strftime("%a")
+
+    if (dayNum=="01" and dayName=="Sun"):
+        return "{}\t{}".format(calWeek, date)
+    else:
+        return "{}\t{}".format(math.floor(int(dayNum)/7),date)
+    
