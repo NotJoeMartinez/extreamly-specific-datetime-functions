@@ -1,4 +1,5 @@
 import datetime
+import csv
 # Term Code
 # This is strange. Numerical value starting at 1 on January 1, 1900, incrementing up by 1 on May 11, July 1, 
 # August 21, and Jaunary 1 of the next year. So, 1/1/1900 has a value of 1, 5/11/1900 has a value of 2, 7/1/1900 
@@ -8,6 +9,7 @@ import datetime
 
 # this thing creates a list in the range of datetime objects starting from 1900 to whatever date you supplied it 
 # it then checks eacho of those date time objects to see if they match up with one of the 4 term dates
+
 def which_term(date):
 
     # starting at jan 1 1900 make a list of datetime objects up until date 
@@ -50,4 +52,9 @@ def which_term(date):
 
 # TODO: Somehow turn the string back into a datetime object and determin what term the given term number is based on the datetime object
     
-print(which_term(datetime.datetime(2100,1,1)))
+yee = which_term(datetime.datetime(2100,1,10))
+
+f = open("dict.txt", "w")
+f.write(str(yee))
+f.close
+
