@@ -87,6 +87,10 @@ for date in dates_generated:
     yearQuarterMonthWeekDay = date_methods.yearQuarterMonthWeekDay(date)
     sub_rows.append(yearQuarterMonthWeekDay)
 
+    # yearQuarterMonthWeek
+    yearQuarterMonthWeek =  date_methods.yearQuarterMonthWeek(date)
+    sub_rows.append(yearQuarterMonthWeek)
+    
     # days from 1900
     dayFrom1900 = date_methods.dayFrom1900(date)
     sub_rows.append(dayFrom1900)
@@ -102,6 +106,8 @@ for date in dates_generated:
     # TermCode 
     termcode = date_methods.termCode(date)
     sub_rows.append(termcode)
+
+
     #### array manipulation ends here #### 
     #append to rows in row 19    
     rows.append(sub_rows)

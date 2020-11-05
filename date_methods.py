@@ -1,5 +1,5 @@
 import datetime, math
-from get_quarter import GetQuarter
+from get_quarter import Quarter
 from get_term import Term
 import calendar
 import numpy as np
@@ -33,16 +33,13 @@ def calDayOfWeek(date):
     calDayofWeek = int(date.strftime("%w")) + 1
     return calDayofWeek
 
-# This is a numerical value that starts at 1 for January 1 of a given year and increments up to 7 before going back to 1. 
-# The value is 1 for January 1, 2020, even though the date was a Wednesday (which should have a value of 4). A week here 
-# seems to be defined as groups of 7 days starting with 1/1. (1 for for April 1, 2020) 
 def nonCalDayOfWeek(date):
     nonCalDayOfWeek = ((int(date.strftime("%j")) - 1 ) % 7 ) + 1
     return nonCalDayOfWeek
 
 # A numerical value starting at 1 on January 1, April 1, July 1, and October 1, incrementing up until the first day of the next quarter is reached. 
 def dayOfQuarter(date):
-    doc = GetQuarter(date)
+    doc = Quarter(date)
     return(doc.dayOfQuarter())
 
 # A numerical value starting at 1 on January 1 and ending at 365/6 on December 31 (92 for April 1, 2020)
@@ -83,8 +80,7 @@ def yearQuarterMonthWeekDay(date):
     # year
     year = date.strftime("%Y")
     # quarter
-    quart = GetQuarter(date)
-    quart = quart.quarter()
+    quart = Quarter(date).quarter()
     # month 
     month = date.strftime("%m")
     # day of month 
@@ -136,7 +132,6 @@ def nonCalWeekOfMonth(date):
 def calWeekOfQuarter(date):
     pass
 
-# 21
 def calendarWeekOfQuarter(date):
     pass 
 
@@ -147,30 +142,31 @@ def calendarWeekOfYear(date):
     return date.strftime("%-U")
 
 def yearQuarterMonthWeek(date):
-    pass
+    year = date.strftime("%Y")
+    # quarter
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    # day of month 
+    return "{}{}{}".format(year,quart,month)
+   
 
-# 24 
 def month(date):
     return date.strftime("%-m")
 
-# 25
 def monthName(date):
     return date.strftime("%B")
 
-# 26
 def monthOfQuarter(date):
     pass
 
-# 27 
 def monthYear(date):
    return date.strftime("%-m/%Y")
 
-# 28
 # Date in the format of monthName, year (April, 2020 for April 1, 2020) 
 def monthNameYear(date):
     return date.strftime("%B, %Y")
 
-# 29
 def yearQuarterMonth(date):
     pass
 
