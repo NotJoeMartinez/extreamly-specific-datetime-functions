@@ -175,7 +175,6 @@ def yearQuarterMonth(date):
     pass
 
 # TermCode
-
 term_dict = Term.make_terms()
 def termCode(date):
     return Term.get_terms(date,term_dict)
