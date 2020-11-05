@@ -10,11 +10,11 @@ import csv
 # this thing creates a list in the range of datetime objects starting from 1900 to whatever date you supplied it 
 # it then checks eacho of those date time objects to see if they match up with one of the 4 term dates
 
-def which_term(date):
+def make_terms():
 
     # starting at jan 1 1900 make a list of datetime objects up until date 
     start = datetime.datetime(1900,1,1)
-    end = date
+    end = datetime.datetime(2100,1,1)
     dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
     # list of "term enders"
@@ -26,10 +26,10 @@ def which_term(date):
     term = 0
 
     # TermDates dictionary 
-    term_dict = {}
 
+    term_dict = {}
     # not sure if this is needed 
-    while(date>dates_generated[i]):
+    while(True):
 
         #  the d_index formating is neccisary to check against out term_strs which triggers the counter
         d_index = dates_generated[i].strftime("%m-%d") 
@@ -37,7 +37,7 @@ def which_term(date):
         if any(d_index in s for s in term_strs):
             term +=1
             # print(term,dates_generated[i].strftime("%Y-%m-%d"))
-            term_dict[term] = dates_generated[i].strftime("%Y-%m-%d") 
+            term_dict[dates_generated[i].strftime("%Y-%m-%d")] = term 
 
         if(i+1 >= len(dates_generated)):
             break
@@ -45,16 +45,39 @@ def which_term(date):
 
     return term_dict
 
-        
-    
 
         
+def get_terms(date):
+    term_dict = make_terms()
 
-# TODO: Somehow turn the string back into a datetime object and determin what term the given term number is based on the datetime object
+    q1 = datetime.datetime(date.year,1,1)
+    q2 = datetime.datetime(date.year,5,11)
+    q3 = datetime.datetime(date.year,7,1)
+    q4 = datetime.datetime(date.year,8,21)
+
+    step = datetime.datetime(date.year + 1, 1,1)
+
+    if ( q2 > date >= q1):
+        print("is between 1 - 5: Jan - May")
+    elif( q3 > date >= q2 ):
+        print("is between 5/11 - 7/0")
+    elif(q4 > date >= q3):
+        print("is between 7/1 and 8, 21")
+    elif(step > date > q4):
+        print("is between 8/21 and 01/01 of the proceading year")
+
+
+    # print(str_month)
+
+
     
-yee = which_term(datetime.datetime(2100,1,10))
+    # print(term_dict)
+    # print(term,type(term))
 
-f = open("dict.txt", "w")
-f.write(str(yee))
-f.close
 
+
+
+get_terms(datetime.datetime(2005,9,1))
+
+# get_terms(datetime.datetime(dates_generated[i].strftime("%Y-%m-%d") ,1,1))
+# get_terms()
