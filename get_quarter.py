@@ -15,6 +15,10 @@ class Quarter:
         
         
     def dayOfQuarter(self):
+
+        # q1, q2, q3, q4 = self.q1, self.q2, self.q3, self.q4
+
+        # date = self.date
         if(self.q2 > self.date >= self.q1):
             # check to see if date is equal to q1
             if (self.date == self.q1):
@@ -63,23 +67,27 @@ class Quarter:
         else:
             print("something went wrong")
 
+    # prints out the quarter
     def quarter(self):
 
-        if(self.q2 > self.date >= self.q1):
+        q1, q2, q3, q4 = self.q1, self.q2, self.q3, self.q4
+        date = self.date
+        
+        if(q2 > date >= q1):
            return 1 
             
-        elif(self.q3 > self.date >= self.q2):
+        elif(q3 > date >= q2):
             return 2
             
-        elif(self.q4 > self.date >= self.q3):
+        elif(q4 > date >= q3):
             return 3
             
-        elif(self.date >= self.q4):
+        elif(date >= q4):
             return 4
             
         else:
             print("something went wrong")
-            
+
      # Numerical value counting months in a quarter. 
     def monthOfQuarter(self):
 
@@ -109,8 +117,6 @@ class Quarter:
 for i in range(1,13):
     obj = Quarter(datetime.datetime(1994,i,i))
 
-    # print(obj.quarter())
-    # print(obj.dayOfQuarter())
-    print(obj.monthOfQuarter())
+    print(obj.quarter())
     
 
