@@ -23,6 +23,10 @@ def which_term(date):
     # Term counter
     term = 0
 
+    # TermDates dictionary 
+    term_dict = {}
+
+    # not sure if this is needed 
     while(date>dates_generated[i]):
 
         #  the d_index formating is neccisary to check against out term_strs which triggers the counter
@@ -30,16 +34,17 @@ def which_term(date):
 
         if any(d_index in s for s in term_strs):
             term +=1
-            print(term,dates_generated[i].strftime("%Y-%m-%d"))
+            # print(term,dates_generated[i].strftime("%Y-%m-%d"))
+            term_dict[term] = dates_generated[i].strftime("%Y-%m-%d") 
 
         if(i+1 >= len(dates_generated)):
             break
         i+=1
 
+    return term_dict
 
         
     
-    pass
 
         
 
