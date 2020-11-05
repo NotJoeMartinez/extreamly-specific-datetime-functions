@@ -1,6 +1,6 @@
 import datetime, math
 from get_quarter import GetQuarter
-import get_term
+from get_term import Term
 import calendar
 import numpy as np
 
@@ -176,9 +176,9 @@ def yearQuarterMonth(date):
 
 # TermCode
 
-term_dict = get_term.make_terms()
+term_dict = Term.make_terms()
 def termCode(date):
-    return get_term.get_terms(date,term_dict)
+    return Term.get_terms(date,term_dict)
 
 
 
