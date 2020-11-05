@@ -14,7 +14,6 @@ class Quarter:
         self.q4 = datetime.datetime(date.year,10,1) 
         
         
-    # Instance method
     def dayOfQuarter(self):
         if(self.q2 > self.date >= self.q1):
             # check to see if date is equal to q1
@@ -80,12 +79,38 @@ class Quarter:
             
         else:
             print("something went wrong")
+            
+     # Numerical value counting months in a quarter. 
+    def monthOfQuarter(self):
+
+        month = self.date.month
+        q = self.quarter()
+
+        if (q == 1):
+
+            return month 
+
+        elif(q == 2):
+
+            return month - 3
+        
+        elif(q == 3):
+            return month - 6 
+        
+        else:
+            return month - 9
         
 
-for i in range(1,4):
+
+
+
+
+
+for i in range(1,13):
     obj = Quarter(datetime.datetime(1994,i,i))
-    print(obj.quarter())
-    print(obj.dayOfQuarter())
+
+    # print(obj.quarter())
+    # print(obj.dayOfQuarter())
+    print(obj.monthOfQuarter())
     
 
-# print(obj.quarter())
