@@ -47,8 +47,7 @@ def make_terms():
 
 
         
-def get_terms(date):
-    term_dict = make_terms()
+def get_terms(date,term_dict):
 
     q1 = datetime.datetime(date.year,1,1)
     q2 = datetime.datetime(date.year,5,11)
@@ -56,28 +55,29 @@ def get_terms(date):
     q4 = datetime.datetime(date.year,8,21)
 
     step = datetime.datetime(date.year + 1, 1,1)
+    # print(step)
 
     if ( q2 > date >= q1):
-        print("is between 1 - 5: Jan - May")
+        return term_dict[q1.strftime("%Y-%m-%d")]
+
     elif( q3 > date >= q2 ):
-        print("is between 5/11 - 7/0")
+        return term_dict[q2.strftime("%Y-%m-%d")]
+        
     elif(q4 > date >= q3):
-        print("is between 7/1 and 8, 21")
-    elif(step > date > q4):
-        print("is between 8/21 and 01/01 of the proceading year")
+        return term_dict[q3.strftime("%Y-%m-%d")]
+
+    elif(step > date >=q4):
+        return term_dict[q4.strftime("%Y-%m-%d")]
+    # if step is accasble in the dict return a value 
+    elif(step.strftime("%Y-%m-%d") in term_dict):
+        return term_dict[step.strftime("%Y-%m-%d")]
+    else:
+        return
 
 
-    # print(str_month)
+# print(make_terms())
+# get_terms(datetime.datetime(2005,9,1), make_terms())
 
-
-    
-    # print(term_dict)
-    # print(term,type(term))
-
-
-
-
-get_terms(datetime.datetime(2005,9,1))
 
 # get_terms(datetime.datetime(dates_generated[i].strftime("%Y-%m-%d") ,1,1))
 # get_terms()
