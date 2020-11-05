@@ -1,5 +1,7 @@
 import datetime
 import csv
+# TODO: turn this into an object 
+
 # Term Code
 # This is strange. Numerical value starting at 1 on January 1, 1900, incrementing up by 1 on May 11, July 1, 
 # August 21, and Jaunary 1 of the next year. So, 1/1/1900 has a value of 1, 5/11/1900 has a value of 2, 7/1/1900 
