@@ -204,3 +204,25 @@ def quarterMonth(date):
     # month 
     month = date.strftime("%m")
     return "{}{}".format(quart,month) 
+
+# 29
+def yearQuarterMonth(date):
+    # year
+    year = date.strftime("%Y")
+    # quarter
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    return "{}{}{}".format(year,quart,month)
+
+# 33 
+def quarter(date):
+    return Quarter(date).quarter()
+
+# 34
+def quarterName(date):
+  return "Q{}".format(Quarter(date).quarter())
+
+# 35
+def quarterYear(date):
+  return "{}/{}".format(Quarter(date).quarter(),date.strftime("%Y"))

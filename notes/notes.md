@@ -122,3 +122,58 @@ def quarterMonth(date):
     return "{}{}".format(quart,month) 
 ```
 
+
+
+### 2020-11-09 14:58:47 (29)
+
+>  [yearQuarterMonth] 29 
+>  Same value as yearQuarterMonthWeekDay, albeit without the week and day as the last 3 digits (2020204 for April 15, 2020)
+
+
+
+```python
+def yearQuarterMonth(date):
+    # year
+    year = date.strftime("%Y")
+    # quarter
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    return "{}{}{}".format(year,quart,month)
+```
+
+
+
+### 2020-11-09 15:03:10 (33)
+
+>  [quarter] 33
+>  Quarter of the year, value is 1,2,3 or 4 depending on if the current date is on or after January 1, April 1, July 1, and October 1
+
+```python
+def quarter(date):
+    return Quarter(date).quarter()
+```
+
+### 2020-11-09 15:07:29 (34)
+
+ [quarterName] 34
+ Same numerical value as before, with a Q in front of it (Q2)
+
+```python
+def quarterName(date):
+  return "Q{}".format(Quarter(date).quarter())
+```
+
+### 2020-11-09 15:10:11 (35)
+
+ [quarterYear] 35 
+
+ Numerical value showing the quarter and year separated by a slash (2/2020)
+
+```python
+def quarterYear(date):
+  return "{}/{}".format(Quarter(date).quarter(),date.strftime("%Y"))
+```
+
+
+

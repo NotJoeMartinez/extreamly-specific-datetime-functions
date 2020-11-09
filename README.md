@@ -26,19 +26,19 @@
 - [ ] monthOfQuarter 26
 - [x] monthYear 27
 - [x] monthNameYear 28
-- [ ] yearQuarterMonth 29
+- [x] yearQuarterMonth 29
 - [x] termCode 30
 - [ ] bannerTermCode 31
 - [ ] termFrom1900 32
-- [ ] quarter 33
-- [ ] quarterName 34
+- [x] quarter 33
+- [x] quarterName 34
 - [ ] quarterYear 35
 - [ ] quarterNameYear 36
 - [ ] yearQuarter 37
 - [ ] year 38
-- [ ] quarterMonthWeekDay 39
-- [ ] quarterMonthWeek 40
-- [ ] quarterMonth 41
+- [x] quarterMonthWeekDay 39
+- [x] quarterMonthWeek 40
+- [x] quarterMonth 41
 - [ ] dayOfProcess 42
 - [ ] monthOfProcess 43
 - [ ] monthNameOfProcess 44
