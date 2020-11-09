@@ -1,5 +1,5 @@
 import datetime, math
-from get_quarter import Quarter
+# from get_quarter import Quarter
 from get_term import Term
 import calendar
 import numpy as np
