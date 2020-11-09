@@ -114,11 +114,11 @@ class Quarter:
 
 
 
-for i in range(1,13):
-    obj = Quarter(datetime.datetime(1994,i,i))
+# for i in range(1,13):
+#     obj = Quarter(datetime.datetime(1994,i,i))
 
-    print("The quarter is {}".format(obj.quarter()))
-    print("The month of the quarter is {}".format(obj.monthOfQuarter()))
-    print("The day of the quarter is {}".format(obj.dayOfQuarter()))
+#     print("The quarter is {}".format(obj.quarter()))
+#     print("The month of the quarter is {}".format(obj.monthOfQuarter()))
+#     print("The day of the quarter is {}".format(obj.dayOfQuarter()))
     
 

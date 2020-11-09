@@ -1,5 +1,5 @@
 import datetime, math
-# from get_quarter import Quarter
+from get_quarter import Quarter
 from get_term import Term
 import calendar
 import numpy as np
@@ -173,9 +173,17 @@ def yearQuarterMonth(date):
 # TermCode
 term_dict = Term.make_terms()
 def termCode(date):
-    return Term.get_terms(date,term_dict)
+    return Term(date).get_terms(term_dict)
 
-
-
+# quarterMonthWeekDay
+def quarterMonthWeekDay(date):
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    # day of month 
+    day = date.strftime("%d") 
+    # week of month
+    week = math.ceil(int(day)/7)
+    return "{}{}{}{}".format(quart,month,week,day) 
 
 

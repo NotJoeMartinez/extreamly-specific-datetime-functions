@@ -50,7 +50,9 @@ class Term:
 
 
         
-    def get_terms(date,term_dict):
+    def get_terms(self,term_dict):
+
+        date = self.date
 
         q1 = datetime.datetime(date.year,1,1)
         q2 = datetime.datetime(date.year,5,11)
