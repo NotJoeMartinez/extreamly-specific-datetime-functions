@@ -156,8 +156,8 @@ def quarter(date):
 
 ### 2020-11-09 15:07:29 (34)
 
- [quarterName] 34
- Same numerical value as before, with a Q in front of it (Q2)
+> [quarterName] 34
+>  Same numerical value as before, with a Q in front of it (Q2)
 
 ```python
 def quarterName(date):
@@ -166,9 +166,9 @@ def quarterName(date):
 
 ### 2020-11-09 15:10:11 (35)
 
- [quarterYear] 35 
-
- Numerical value showing the quarter and year separated by a slash (2/2020)
+>  [quarterYear] 35 
+>
+> Numerical value showing the quarter and year separated by a slash (2/2020)
 
 ```python
 def quarterYear(date):
@@ -176,4 +176,38 @@ def quarterYear(date):
 ```
 
 
+
+### 2020-11-09 15:14:16 (36)
+
+>  [quarterNameYear] 36 
+>  The quarterName and year separated by a space (Q2 2020)
+
+```python
+def quarterName(date):
+   return "Q{} {}".format(Quarter(date).quarter(),date.strftime("%Y"))
+```
+
+
+
+### 2020-11-09 15:18:38 (37)
+
+>  [yearQuarter] 37
+>  A 5 digit number with the first 4 digits being the year and the last digit being the quarter (20202 for Q2 2020)
+
+
+
+```python
+def yearQuarter(date):
+	  return "{}{}".format(date.strftime("%Y"),Quarter(date).quarter())
+```
+
+### 2020-11-09 15:22:07 (38)
+
+> [year] 38
+>  The numerical value of the year (2020 for April 1, 2020)
+
+```python
+def year(date):
+  return date.strftime("%Y")
+```
 

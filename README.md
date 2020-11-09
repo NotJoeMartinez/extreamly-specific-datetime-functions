@@ -32,10 +32,10 @@
 - [ ] termFrom1900 32
 - [x] quarter 33
 - [x] quarterName 34
-- [ ] quarterYear 35
-- [ ] quarterNameYear 36
-- [ ] yearQuarter 37
-- [ ] year 38
+- [x] quarterYear 35
+- [x] quarterNameYear 36
+- [x] yearQuarter 37
+- [x] year 38
 - [x] quarterMonthWeekDay 39
 - [x] quarterMonthWeek 40
 - [x] quarterMonth 41

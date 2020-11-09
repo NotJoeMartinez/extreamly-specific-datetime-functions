@@ -226,3 +226,15 @@ def quarterName(date):
 # 35
 def quarterYear(date):
   return "{}/{}".format(Quarter(date).quarter(),date.strftime("%Y"))
+
+# 36
+def quarterName(date):
+   return "Q{} {}".format(Quarter(date).quarter(),date.strftime("%Y"))
+
+# 37
+def yearQuarter(date):
+	  return "{}{}".format(date.strftime("%Y"),Quarter(date).quarter())
+
+# 38
+def year(date):
+      return date.strftime("%Y")
