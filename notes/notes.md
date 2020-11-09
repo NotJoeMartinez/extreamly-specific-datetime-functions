@@ -42,7 +42,7 @@ return Term(date).get_terms(term_dict)
 
 This works 
 
-### 2020-11-09 14:43:14
+### 2020-11-09 14:43:14 (39)
 
 so we are on 39
 
@@ -84,5 +84,41 @@ def quarterMonthWeekDay(date):
     # week of month
     week = math.ceil(int(day)/7)
     return "{}{}{}{}".format(quart,month,week,day) 
+```
+
+
+
+### 2020-11-09 14:49:16 (40)
+
+>  [quarterMonthWeek] 40 
+>  quarterMonthWeekDay value without the day as the last 2 digits (2043 for April 15, 2020)
+
+Day needs to be in this one or the week calculation will not work
+
+```python
+def quarterMonthWeek(date):
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    # day
+    day = date.strftime("%d") 
+    # week of month
+    week = math.ceil(int(day)/7)
+    return "{}{}{}".format(quart,month,week) 
+```
+
+
+
+### 2020-11-09 14:54:41 (41)
+
+>  [quarterMonth] 41
+>  quarterMonthWeek without week as the last digit (204 for April 15, 2020)
+
+```python
+def quarterMonth(date):
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    return "{}{}".format(quart,month) 
 ```
 

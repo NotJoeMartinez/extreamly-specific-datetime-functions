@@ -186,4 +186,21 @@ def quarterMonthWeekDay(date):
     week = math.ceil(int(day)/7)
     return "{}{}{}{}".format(quart,month,week,day) 
 
+# 40
+def quarterMonthWeek(date):
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    # day
+    day = date.strftime("%d") 
+    # week of month
+    week = math.ceil(int(day)/7)
+    return "{}{}{}".format(quart,month,week) 
 
+
+# 41
+def quarterMonth(date):
+    quart = Quarter(date).quarter()
+    # month 
+    month = date.strftime("%m")
+    return "{}{}".format(quart,month) 
