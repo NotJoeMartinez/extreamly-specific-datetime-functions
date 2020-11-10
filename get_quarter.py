@@ -70,6 +70,7 @@ class Quarter:
     # prints out the quarter
     def quarter(self):
 
+
         q1, q2, q3, q4 = self.q1, self.q2, self.q3, self.q4
         date = self.date
         
@@ -88,7 +89,7 @@ class Quarter:
         else:
             print("something went wrong")
 
-     # Numerical value counting months in a quarter. 
+    # Numerical value counting months in a quarter. 
     def monthOfQuarter(self):
 
         month = self.date.month
@@ -113,10 +114,6 @@ class Quarter:
         date = self.date
         quarter = self.quarter()
 
-        # TODO: fix index out of range issue  
-        # put quarters in array
-        # q_array = [self.q1, self.q2, self.q3, self.q4]
-
         q_dict = {
             1: self.q1,
             2: self.q2,
@@ -124,9 +121,14 @@ class Quarter:
             4: self.q4
         }
 
-        # assign start and end dates for we can populate dates_generated[]
-        start =  q_dict[quarter]
-        end = q_dict[quarter]
+        if (quarter == 4):
+            start = q_dict[quarter]
+            end = datetime.datetime(date.year+1,1,1) 
+        else:
+            # assign start and end dates for we can populate dates_generated[]
+            start =  q_dict[quarter]
+            end = q_dict[quarter + 1]
+
 
         # populate dates generated with the diffrence in days from start to end
         dates_generated = []
@@ -145,7 +147,8 @@ class Quarter:
                 week += 1
             # if we make it to the currend day return the week number
             if (dates_generated[index] == date):
-                return "date: {} week: {}".format(date.strftime("%m%d %a"), week)
+                # return "date: {} week: {}".format(date.strftime("%m/%d %a"), week)
+                return week
             # breaks statment if it reaches out of index
             if (index + 1 >= len(dates_generated)):
                 break
@@ -160,9 +163,9 @@ class Quarter:
 
 
 # for i in range(1,13):
-# obj = Quarter(datetime.datetime(2019,7,1))
+obj = Quarter(datetime.datetime(2019,7,1))
 
-# print(obj.calendarWeekOfQuarter())
+print(obj.calendarWeekOfQuarter())
 
 
 

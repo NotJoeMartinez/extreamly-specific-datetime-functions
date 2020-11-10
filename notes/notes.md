@@ -241,5 +241,79 @@ My problem seems to be when it asks for manual calculations
 
 
 
+### 2020-11-09 20:20:19 (19)
+
+```python
+    def monthOfQuarter(self):
+
+        month = self.date.month
+        q = self.quarter()
+
+        if (q == 1):
+
+            return month 
+
+        elif(q == 2):
+
+            return month - 3
+        
+        elif(q == 3):
+            return month - 6 
+        
+        else:
+            return month - 9
+    
+    def calendarWeekOfQuarter(self):
+        # determine date and quarter
+        date = self.date
+        quarter = self.quarter()
+
+        # TODO: fix index out of range issue  
+        # put quarters in array
+        # q_array = [self.q1, self.q2, self.q3, self.q4]
+
+        q_dict = {
+            1: self.q1,
+            2: self.q2,
+            3: self.q3,
+            4: self.q4
+        }
+
+        if (quarter == 4):
+            start = q_dict[quarter]
+            end = datetime.datetime(date.year+1,1,1) 
+        else:
+            # assign start and end dates for we can populate dates_generated[]
+            start =  q_dict[quarter]
+            end = q_dict[quarter + 1]
+
+
+        # populate dates generated with the diffrence in days from start to end
+        dates_generated = []
+        for x in range(0, (end-start).days): 
+            foo = start + datetime.timedelta(days=x) 
+            dates_generated.append(foo)
+        
+
+        week = 0
+        index = 0
+
+        while(True):
+
+            # adds one to the week if it is a sunday
+            if (dates_generated[index].strftime("%a") == "Sun"):
+                week += 1
+            # if we make it to the currend day return the week number
+            if (dates_generated[index] == date):
+                # return "date: {} week: {}".format(date.strftime("%m/%d %a"), week)
+                return week
+            # breaks statment if it reaches out of index
+            if (index + 1 >= len(dates_generated)):
+                break
+
+            index += 1
+
+```
+
 
 
