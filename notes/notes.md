@@ -367,7 +367,7 @@ still haven't done any diff checking
 
 ### 31
 
-You will need the previous deffintion of `termcode` to understand this one 
+You will need the previous definition of `termcode` to understand this one 
 
 > [termCode] 30 
 >  This is strange. Numerical value starting at 1 on January 1, 1900, incrementing up by 1 on May 11, July 1, August 21, and Jaunary 1 of the next year. So, 1/1/1900 has a value of 1, 5/11/1900 has a value of 2, 7/1/1900 has a value of 3, 8/21/1900 has a value of 4, 1/1/1901 has a value of 5, and the cycle continues. This is at least roughly aligned with our Spring (1/1-5/10), Summer I (5/10-6/30), Summer II (7/1-8/20), and Fall (8/20-12/31) terms
@@ -383,11 +383,34 @@ summer 2 => 7/1-8/20
 fall => 8/20-12/31
 
 # Modified deff
-2 => spring
-3 => summer1
-4 => summer2
-1= > Fall
+2 => spring => 1/1 through 5/10?
+3 => summer1 => 5/11 through 6/30?
+4 => summer2 => 7/1 through 8/20?
+1= > Fall => 8/21 through 12/31?
 
 ```
 
 No really sure if this means I need to generate a new dictionary as I did with term code or if these dates are fixed as they are in the quarters object. 
+
+```python
+    def termCode(self):
+
+        spring, summer1, summer2, fall = self.spring, self.summer1, self.summer2, self.fall
+
+        date = self.date
+
+        if (summer1 > date >= spring ):
+            return 2
+        elif (summer2 > date >= summer1):
+            return 3
+        elif (fall > date >= summer2):
+            return 4
+        elif (date >= fall):
+            return 1
+        else: 
+            print("some stupid eror")
+```
+
+
+
+cake 

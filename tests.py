@@ -11,11 +11,9 @@ end = datetime.datetime.strptime("2020-12-31", "%Y-%m-%d")
 dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
 # Test function below 
-# for date in dates_generated:
-    # print
-term_dict = Term.make_terms()
+for date in dates_generated:
+    print(Term(date).bannerTermCode())
 
-print(term_dict)
 
 
 

@@ -13,6 +13,15 @@ class Term:
     def __init__(self,date):
         self.date = date
 
+        # terms         
+        self.spring = datetime.datetime(date.year,1,1)
+        
+        self.summer1 = datetime.datetime(date.year,5,11) 
+
+        self.summer2 = datetime.datetime(date.year,7,1)
+
+        self.fall = datetime.datetime(date.year,8,21) 
+
     def make_terms():
 
         # starting at jan 1 1900 make a list of datetime objects up until date 
@@ -78,4 +87,24 @@ class Term:
             return term_dict[step.strftime("%Y-%m-%d")]
         else:
             return
+    
+    def bannerTermCode(self):
 
+        spring, summer1, summer2, fall = self.spring, self.summer1, self.summer2, self.fall
+
+        date = self.date
+
+        if (summer1 > date >= spring ):
+            return "{}{}".format(date.strftime("%Y"),2)
+        elif (summer2 > date >= summer1):
+            return "{}{}".format(date.strftime("%Y"),3)
+        elif (fall > date >= summer2):
+            return "{}{}".format(date.strftime("%Y"),4)
+        elif (date >= fall):
+            return "{}{}".format(date.strftime("%Y"),1)
+        else: 
+            print("some stupid eror")
+
+
+# obj = Term(datetime.datetime(2019,1,1))
+# print(obj.termCode())
