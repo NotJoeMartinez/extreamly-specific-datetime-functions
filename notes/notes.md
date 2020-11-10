@@ -243,25 +243,10 @@ My problem seems to be when it asks for manual calculations
 
 ### 2020-11-09 20:20:19 (19)
 
+calendarWeekOfQuarter
+
 ```python
-    def monthOfQuarter(self):
-
-        month = self.date.month
-        q = self.quarter()
-
-        if (q == 1):
-
-            return month 
-
-        elif(q == 2):
-
-            return month - 3
-        
-        elif(q == 3):
-            return month - 6 
-        
-        else:
-            return month - 9
+  
     
     def calendarWeekOfQuarter(self):
         # determine date and quarter

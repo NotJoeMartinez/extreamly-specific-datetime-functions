@@ -10,9 +10,23 @@ end = datetime.datetime.strptime("2020-01-02", "%Y-%m-%d")
 dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
 # Test function below 
+# for date in dates_generated:
+#     print(date_methods.calendarWeekOfQuarter(date))
+
+
+
+
+## Stuff for testing csv
+import csv
+rows = []
 for date in dates_generated:
-    print(date_methods.calendarWeekOfQuarter(date))
+    sub_rows=[]
+    sub_rows.append(date_methods.calendarWeekOfQuarter(date))
+    rows.append(sub_rows)
 
-
+filename = "19.csv"
+with open(filename, 'w') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerows(rows)
 
     

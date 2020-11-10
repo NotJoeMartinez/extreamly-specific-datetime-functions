@@ -16,7 +16,7 @@
 - [x] dayFrom1900 16
 - [x] calendarWeekOfMonth 17
 - [x] noncalendarWeekOfMonth 18
-- [ ] calendarWeekOfQuarter 19
+- [x] calendarWeekOfQuarter 19
 - [ ] noncalendarWeekOfQuarter 20
 - [x] calendarWeekOfYear 21
 - [ ] noncalendarWeekOfYear 22
