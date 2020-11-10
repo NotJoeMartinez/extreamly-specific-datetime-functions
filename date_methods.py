@@ -234,3 +234,7 @@ def calendarWeekOfQuarter(date):
 
 def nonCalWeekOfQuarter(date):
     return Quarter(date).nonCalWeekOfQuarter()
+
+# 26
+def monthOfQuarter(date):
+    return Quarter(date).monthOfQuarter()

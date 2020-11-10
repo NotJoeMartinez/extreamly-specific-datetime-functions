@@ -324,3 +324,26 @@ Added one to the return value to calendar week of quarter should do it right?
 >  [monthOfQuarter] 26
 >  Numerical value counting months in a quarter. The first month of a quarter has a value of 1 (1 for April 1, 2020)
 
+```python
+    def monthOfQuarter(self):
+        months_dict = {
+            1: 1,
+            2: 2,
+            3: 3,
+            4: 1,
+            5: 2, 
+            6: 3,
+            7: 1,
+            8: 2,
+            9: 3, 
+            10: 1,
+            11: 2,
+            12: 3, 
+        }
+        moq = months_dict[self.date.month]
+        return moq 
+            
+
+```
+
+sometimes I make things harder than they need to be. case in point while this might not be elegant it works better than the crazy logic  I wrote earlier. 

@@ -23,7 +23,7 @@
 - [x] yearQuarterMonthWeek 23
 - [x] month 24
 - [x] monthName 25
-- [ ] monthOfQuarter 26
+- [x] monthOfQuarter 26
 - [x] monthYear 27
 - [x] monthNameYear 28
 - [x] yearQuarterMonth 29

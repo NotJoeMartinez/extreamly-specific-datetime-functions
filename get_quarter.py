@@ -12,8 +12,30 @@ class Quarter:
         self.q3 = datetime.datetime(date.year,7,1)
         # Oct
         self.q4 = datetime.datetime(date.year,10,1) 
-        
-        
+    
+    # Makes a range of date time dynamic to the date time object passed to it
+    def makeRange(self):
+        date = self.date
+        quarter = self.quarter()
+
+        q_dict = {
+            1: self.q1,
+            2: self.q2,
+            3: self.q3,
+            4: self.q4
+        }
+
+        if (quarter == 4):
+            start = q_dict[quarter]
+            end = datetime.datetime(date.year+1,1,1) 
+        else:
+            # assign start and end dates for we can populate dates_generated[]
+            start =  q_dict[quarter]
+            end = q_dict[quarter + 1]
+
+        dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
+        return dates_generated
+
     def dayOfQuarter(self):
 
         q1, q2, q3, q4 = self.q1, self.q2, self.q3, self.q4
@@ -153,10 +175,26 @@ class Quarter:
         
     def nonCalWeekOfQuarter(self):
         return self.calendarWeekOfQuarter() + 1
-    
-    def monthOfQuarter(self):
 
-        return 
+
+    def monthOfQuarter(self):
+        months_dict = {
+            1: 1,
+            2: 2,
+            3: 3,
+            4: 1,
+            5: 2, 
+            6: 3,
+            7: 1,
+            8: 2,
+            9: 3, 
+            10: 1,
+            11: 2,
+            12: 3, 
+        }
+        moq = months_dict[self.date.month]
+        return moq 
+            
 
 
 
@@ -166,9 +204,9 @@ class Quarter:
 
 
 # for i in range(1,13):
-# obj = Quarter(datetime.datetime(2019,7,1))
+# obj = Quarter(datetime.datetime(2019,1,1))
 
-# print(obj.calendarWeekOfQuarter())
+# print(obj.monthOfQuarter())
 
 
 
