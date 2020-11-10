@@ -11,7 +11,7 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 for date in dates_generated:
-    print(date_methods.year(date))
+    print(date_methods.calendarWeekOfQuarter(date))
 
 
 

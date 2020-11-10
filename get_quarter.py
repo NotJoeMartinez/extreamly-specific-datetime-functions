@@ -107,7 +107,52 @@ class Quarter:
         
         else:
             return month - 9
+    
+    def calendarWeekOfQuarter(self):
+        # determine date and quarter
+        date = self.date
+        quarter = self.quarter()
+
+        # TODO: fix index out of range issue  
+        # put quarters in array
+        # q_array = [self.q1, self.q2, self.q3, self.q4]
+
+        q_dict = {
+            1: self.q1,
+            2: self.q2,
+            3: self.q3,
+            4: self.q4
+        }
+
+        # assign start and end dates for we can populate dates_generated[]
+        start =  q_dict[quarter]
+        end = q_dict[quarter]
+
+        # populate dates generated with the diffrence in days from start to end
+        dates_generated = []
+        for x in range(0, (end-start).days): 
+            foo = start + datetime.timedelta(days=x) 
+            dates_generated.append(foo)
         
+
+        week = 0
+        index = 0
+
+        while(True):
+
+            # adds one to the week if it is a sunday
+            if (dates_generated[index].strftime("%a") == "Sun"):
+                week += 1
+            # if we make it to the currend day return the week number
+            if (dates_generated[index] == date):
+                return "date: {} week: {}".format(date.strftime("%m%d %a"), week)
+            # breaks statment if it reaches out of index
+            if (index + 1 >= len(dates_generated)):
+                break
+
+            index += 1
+
+
 
 
 
@@ -115,7 +160,11 @@ class Quarter:
 
 
 # for i in range(1,13):
-#     obj = Quarter(datetime.datetime(1994,i,i))
+# obj = Quarter(datetime.datetime(2019,7,1))
+
+# print(obj.calendarWeekOfQuarter())
+
+
 
 #     print("The quarter is {}".format(obj.quarter()))
 #     print("The month of the quarter is {}".format(obj.monthOfQuarter()))

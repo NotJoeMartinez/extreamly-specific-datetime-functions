@@ -126,16 +126,6 @@ def nonCalWeekOfMonth(date):
     return week
 
 
-# nonCalWeekOfQuarter 20
-# A numerical value counting full weeks in a given quarter. If a quarter starts on a day other than Sunday, 
-# this value will be 0 until the first Sunday of a quarter, where it will start with 1. (0 for April 1, 2020) 
-def calWeekOfQuarter(date):
-    pass
-
-def calendarWeekOfQuarter(date):
-    pass 
-
-
 # A numerical value counting full weeks in a given year. If a year starts on a day 
 # other than Sunday, this value will be 0 until the first Sunday of a year, where it will start with 1. (13 for April 1, 2020) 
 def calendarWeekOfYear(date):
@@ -238,3 +228,6 @@ def yearQuarter(date):
 # 38
 def year(date):
       return date.strftime("%Y")
+
+def calendarWeekOfQuarter(date):
+    return Quarter(date).calendarWeekOfQuarter()    
