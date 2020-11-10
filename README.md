@@ -19,7 +19,7 @@
 - [x] calendarWeekOfQuarter 19
 - [x] noncalendarWeekOfQuarter 20
 - [x] calendarWeekOfYear 21
-- [ ] noncalendarWeekOfYear 22
+- [x] noncalendarWeekOfYear 22
 - [x] yearQuarterMonthWeek 23
 - [x] month 24
 - [x] monthName 25

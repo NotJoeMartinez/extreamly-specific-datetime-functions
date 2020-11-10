@@ -362,3 +362,32 @@ def nonCalWeekOfYear(date):
 ```
 
 still haven't done any diff checking 
+
+
+
+### 31
+
+You will need the previous deffintion of `termcode` to understand this one 
+
+> [termCode] 30 
+>  This is strange. Numerical value starting at 1 on January 1, 1900, incrementing up by 1 on May 11, July 1, August 21, and Jaunary 1 of the next year. So, 1/1/1900 has a value of 1, 5/11/1900 has a value of 2, 7/1/1900 has a value of 3, 8/21/1900 has a value of 4, 1/1/1901 has a value of 5, and the cycle continues. This is at least roughly aligned with our Spring (1/1-5/10), Summer I (5/10-6/30), Summer II (7/1-8/20), and Fall (8/20-12/31) terms
+
+> [bannerTermCode] 31
+>  This is also strange. Numerical value composed of the year and then either 1,2,3, or 4 to denote the term. These seem to change with the markers denoted above, and are coded suce that 2 = Spring, 3 = Summer 1, 4 = Summer II, and 1 = Fall. So, 1/1/1900 has a value of 19002, 5/11/1900 has a value of 19003, 7/1/1900 has a value of 19004, 8/21/1900 has a value of 19001, 1/1/1901 has a value of 19012
+
+```
+## Previous deff: 
+spring => 1/1-5/10
+summer 1 => 5/10-6/30
+summer 2 => 7/1-8/20
+fall => 8/20-12/31
+
+# Modified deff
+2 => spring
+3 => summer1
+4 => summer2
+1= > Fall
+
+```
+
+No really sure if this means I need to generate a new dictionary as I did with term code or if these dates are fixed as they are in the quarters object. 
