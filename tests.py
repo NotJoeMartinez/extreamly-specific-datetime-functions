@@ -12,7 +12,7 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 for date in dates_generated:
-    print(Term(date).bannerTermCode())
+    print(date,Term(date).termFrom1900())
 
 
 

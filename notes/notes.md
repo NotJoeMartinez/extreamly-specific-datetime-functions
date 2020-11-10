@@ -393,24 +393,66 @@ fall => 8/20-12/31
 No really sure if this means I need to generate a new dictionary as I did with term code or if these dates are fixed as they are in the quarters object. 
 
 ```python
-    def termCode(self):
+    def bannerTermCode(self):
 
         spring, summer1, summer2, fall = self.spring, self.summer1, self.summer2, self.fall
 
         date = self.date
 
         if (summer1 > date >= spring ):
-            return 2
+            return "{}{}".format(date.strftime("%Y"),2)
         elif (summer2 > date >= summer1):
-            return 3
+            return "{}{}".format(date.strftime("%Y"),3)
         elif (fall > date >= summer2):
-            return 4
+            return "{}{}".format(date.strftime("%Y"),4)
         elif (date >= fall):
-            return 1
+            return "{}{}".format(date.strftime("%Y"),1)
         else: 
             print("some stupid eror")
 ```
 
 
 
-cake 
+
+
+
+
+### termfrom1900 (32)
+
+>  [termFrom1900] 32
+>  This is closer to common usage, but is still strange. First 4 digits are the year, last digit will always be 7. This has term identifiers like bannerTermCode, but this
+>
+> time we're using a convention more used by TTU. These are coded suce that 5 = Spring, 8 = Summer 1, 9 = Summer II, and 2 = Fall. So, 1/1/1900 has a value of 190057, 5/11/1900 has a value of 190087, 7/1/1900 has a value of 190097, 8/21/1900 has a value of 190027, 1/1/1901 has a value of 190157.
+
+
+
+```
+5 => spring
+8 => summer 
+9 => summer2
+2 => fall
+```
+
+```python
+    def termFrom1900(self):
+
+        spring, summer1, summer2, fall = self.spring, self.summer1, self.summer2, self.fall
+
+        date = self.date
+
+        if (summer1 > date >= spring ): # spring
+            return "{}{}7".format(date.strftime("%Y"),5)
+
+        elif (summer2 > date >= summer1): # summer1
+            return "{}{}7".format(date.strftime("%Y"),8)
+
+        elif (fall > date >= summer2): # summer2
+            return "{}{}7".format(date.strftime("%Y"),9) 
+
+        elif (date >= fall): # fall
+            return "{}{}7".format(date.strftime("%Y"),2)
+        else: 
+            print("some stupid error")
+```
+
+I'm aware that I can abstract this function but I don't think this will be as readable 

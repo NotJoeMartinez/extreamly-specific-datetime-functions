@@ -103,8 +103,27 @@ class Term:
         elif (date >= fall):
             return "{}{}".format(date.strftime("%Y"),1)
         else: 
-            print("some stupid eror")
+            print("some stupid error")
 
+    def termFrom1900(self):
+
+        spring, summer1, summer2, fall = self.spring, self.summer1, self.summer2, self.fall
+
+        date = self.date
+
+        if (summer1 > date >= spring ): # spring
+            return "{}{}7".format(date.strftime("%Y"),5)
+
+        elif (summer2 > date >= summer1): # summer1
+            return "{}{}7".format(date.strftime("%Y"),8)
+
+        elif (fall > date >= summer2): # summer2
+            return "{}{}7".format(date.strftime("%Y"),9) 
+
+        elif (date >= fall): # fall
+            return "{}{}7".format(date.strftime("%Y"),2)
+        else: 
+            print("some stupid error")
 
 # obj = Term(datetime.datetime(2019,1,1))
 # print(obj.termCode())

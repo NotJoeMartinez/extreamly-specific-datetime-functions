@@ -28,7 +28,7 @@
 - [x] monthNameYear 28
 - [x] yearQuarterMonth 29
 - [x] termCode 30
-- [ ] bannerTermCode 31
+- [x] bannerTermCode 31
 - [ ] termFrom1900 32
 - [x] quarter 33
 - [x] quarterName 34
