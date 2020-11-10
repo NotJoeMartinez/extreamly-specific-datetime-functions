@@ -154,6 +154,10 @@ class Quarter:
                 break
 
             index += 1
+    
+        
+    def nonCalWeekOfQuarter(self):
+        return self.calendarWeekOfQuarter() + 1
 
 
 

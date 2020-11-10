@@ -231,3 +231,6 @@ def year(date):
 
 def calendarWeekOfQuarter(date):
     return Quarter(date).calendarWeekOfQuarter()    
+
+def nonCalWeekOfQuarter(date):
+    return Quarter(date).nonCalWeekOfQuarter()

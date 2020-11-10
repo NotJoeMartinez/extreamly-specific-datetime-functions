@@ -300,5 +300,17 @@ calendarWeekOfQuarter
 
 ```
 
+### 20 ()
+
+> [noncalendarWeekOfQuarter] 20
+>  A numerical value counting weeks in a given quarter, with the first day of the quarter having a value of 1 regardless of when the quarter starts. (1 for April 1, 2020)> 
 
 
+
+```python
+    def nonCalWeekOfQuarter(self):
+        return self.calendarWeekOfQuarter() + 1
+
+```
+
+Added one to the return value to calendar week of quarter should do it right? 
