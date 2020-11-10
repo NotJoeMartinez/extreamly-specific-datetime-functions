@@ -241,3 +241,4 @@ def monthOfQuarter(date):
 
 def nonCalWeekOfYear(date):
     return int(date.strftime("%U")) + 1
+

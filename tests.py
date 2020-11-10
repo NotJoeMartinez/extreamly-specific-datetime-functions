@@ -2,6 +2,7 @@ import datetime
 import date_methods
 import os
 from get_term import Term
+from get_process import Process
 
 ## greates a list of datetime objects for the specified range. To print them formatted us strformat
 start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
@@ -12,7 +13,7 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 for date in dates_generated:
-    print(date,Term(date).termFrom1900())
+    print(date.strftime("%m-%d %a"), Process(date).calWeek())
 
 
 

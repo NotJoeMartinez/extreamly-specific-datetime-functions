@@ -456,3 +456,55 @@ No really sure if this means I need to generate a new dictionary as I did with t
 ```
 
 I'm aware that I can abstract this function but I don't think this will be as readable 
+
+
+
+### Process object 
+
+You are going to need calweek of month to understand this one 
+
+>  [calendarWeekOfMonth] 17
+>  A numerical value counting full weeks in a given month. If a month starts on a day other than Sunday, this value will be 0 until the first Sunday of a month, where it will start with 1. (0 for April 1, 2020)
+
+
+
+### Day of process
+
+>  [dayOfProcess] 42
+>  Numerical value counting days from the monday in the 3rd "calendarWeekOfMonth" in September. This date is labeled as "1" and counts up until the next such date of the next year. 9/16/2019 has value of 1, and counts up to 371 on 9/20/2020, as 9/21/2020 is the 3rd calendaryWeekofMonth Monday, and thus resets the count at 1. It seems this "3rd Wednesday" is being used as a "start Of Process" date for the following columns.
+
+
+
+```
+starting third  calWeekOfMonth() on monday 
+count up each day until the third calweekOfMonth() the proceading year
+```
+
+
+
+
+
+1. make a list of datetime objects in the range of dates in current month
+2. itterate through range and unless sunday
+
+
+
+```python
+    def calWeek(self):
+
+        dates_arr = self.makeRange()
+        print(dates_arr)
+
+        week = 0
+        for i in dates_arr:
+            if(i.strftime("%a") == "Sun"):
+                # print(i)
+                # print(i.strftime("%a"))
+                week += 1
+            # print(i)
+            if (i.strftime("%d") == self.date.strftime("%d")):
+                return week
+```
+
+
+

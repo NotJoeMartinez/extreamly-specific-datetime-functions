@@ -29,7 +29,7 @@
 - [x] yearQuarterMonth 29
 - [x] termCode 30
 - [x] bannerTermCode 31
-- [ ] termFrom1900 32
+- [x] termFrom1900 32
 - [x] quarter 33
 - [x] quarterName 34
 - [x] quarterYear 35
