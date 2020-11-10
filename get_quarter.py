@@ -163,9 +163,9 @@ class Quarter:
 
 
 # for i in range(1,13):
-obj = Quarter(datetime.datetime(2019,7,1))
+# obj = Quarter(datetime.datetime(2019,7,1))
 
-print(obj.calendarWeekOfQuarter())
+# print(obj.calendarWeekOfQuarter())
 
 
 
