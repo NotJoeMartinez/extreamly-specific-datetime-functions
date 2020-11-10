@@ -1,7 +1,7 @@
 import datetime
-import date_methods
+# import date_methods
 import os
-from get_term import Term
+# from get_term import Term
 from get_process import Process
 
 ## greates a list of datetime objects for the specified range. To print them formatted us strformat

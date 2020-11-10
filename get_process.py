@@ -29,18 +29,22 @@ class Process:
         week = 0
         index = 0
         while(True):
-
+            
             if(dates_arr[index].strftime("%a") == "Sun"):
                 week += 1
-
-            if (dates_arr[index].strftime("%d") == self.date.strftime("%d")):
-                
+            
+            # print(dates_arr[index].day, self.date.day)
+            # if (dates_arr[index].strftime("%d") == self.date.strftime("%d")):
+            if(dates_arr[index].day == self.date.day):
                 return week
                 # break
             
-            if(index + 1 >= len(dates_arr)):
-                break
-            index += 1
+  
+            if (index + 1 > len(dates_arr)):
+                return week
+                break            
+            else:
+                index += 1
 
 
 
