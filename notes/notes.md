@@ -347,3 +347,18 @@ Added one to the return value to calendar week of quarter should do it right?
 ```
 
 sometimes I make things harder than they need to be. case in point while this might not be elegant it works better than the crazy logic  I wrote earlier. 
+
+
+
+### 22
+
+>  A numerical value counting weeks in a given year, with the first day of the year having a value of 1 regardless of when the year starts. (14 for April 1, 2020)
+
+I'm assuming the week will start on sunday so I just added one to the calweek of year 
+
+```python
+def nonCalWeekOfYear(date):
+    return int(date.strftime("%U")) + 1
+```
+
+still haven't done any diff checking 
