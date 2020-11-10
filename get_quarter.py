@@ -129,12 +129,7 @@ class Quarter:
             start =  q_dict[quarter]
             end = q_dict[quarter + 1]
 
-
-        # populate dates generated with the diffrence in days from start to end
-        dates_generated = []
-        for x in range(0, (end-start).days): 
-            foo = start + datetime.timedelta(days=x) 
-            dates_generated.append(foo)
+        dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
         
 
         week = 0
@@ -158,6 +153,10 @@ class Quarter:
         
     def nonCalWeekOfQuarter(self):
         return self.calendarWeekOfQuarter() + 1
+    
+    def monthOfQuarter(self):
+
+        return 
 
 
 

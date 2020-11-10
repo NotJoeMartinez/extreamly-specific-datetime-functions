@@ -314,3 +314,13 @@ calendarWeekOfQuarter
 ```
 
 Added one to the return value to calendar week of quarter should do it right? 
+
+
+
+
+
+### 26
+
+>  [monthOfQuarter] 26
+>  Numerical value counting months in a quarter. The first month of a quarter has a value of 1 (1 for April 1, 2020)
+
