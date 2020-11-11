@@ -31,21 +31,21 @@ class Process:
         week = 0
         index = 0
 
-        new_range = []        
+
 
         while(True):
             
             if(dates_arr[index].strftime("%a") == "Sun"):
                 week += 1
             
-            if(dates_arr[index].strftime("%a") == "Mon" and week == 3 and len(new_range) < 2):
-                new_range.append(dates_arr[index])
-                return new_range 
-            
+            if(dates_arr[index].strftime("%a") == "Mon" and week == 3):
+                
+                return dates_arr[index]
 
-            if (index + 1 > len(dates_arr)):
-                return week
-                break            
+
+
+            if (index + 1 >= len(dates_arr)):
+                break
             else:
                 index += 1
     
@@ -62,9 +62,13 @@ def test_1_12():
         print(obj.calWeek())
 
 def test_threeCalWeek():
+    foo = []
     for i in range (2010, 2019):
         obj=Process(datetime.datetime(i,1,15))
-        print(obj.threeCalWeek())
+        foo.append(obj.threeCalWeek())
+        print(foo)
+        if (len(foo)>=2):
+            foo.pop(0)
 
 
 
