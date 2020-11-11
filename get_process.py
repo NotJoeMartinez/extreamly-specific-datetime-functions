@@ -31,8 +31,6 @@ class Process:
         week = 0
         index = 0
 
-
-
         while(True):
             
             if(dates_arr[index].strftime("%a") == "Sun"):
@@ -48,11 +46,6 @@ class Process:
                 break
             else:
                 index += 1
-    
-        
-
-
-
 
 
 
@@ -63,14 +56,18 @@ def test_1_12():
 
 def test_threeCalWeek():
     foo = []
-    for i in range (2010, 2019):
+    for i in range (2020,2100):
         obj=Process(datetime.datetime(i,1,15))
         foo.append(obj.threeCalWeek())
-        print(foo)
+
+        if (len(foo) > 1):
+            print(foo)
         if (len(foo)>=2):
             foo.pop(0)
 
 
+def get_two():
+    obj = Process(datetime.datetime(2010,1,1))
+    print(obj.get_two())
 
 test_threeCalWeek()
-# test_1_12()
