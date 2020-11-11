@@ -18,12 +18,14 @@ class Process:
 
         dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]  
 
+        dates_generated.append(self.date)
 
         return dates_generated 
 
     def calWeek(self):
 
         dates_arr = self.makeRange()
+        # print(dates_arr, self.date)
         # print(dates_arr)
 
         week = 0
@@ -45,6 +47,9 @@ class Process:
                 break            
             else:
                 index += 1
+    
+    def get_third_mon(self):
+        
 
 
 
