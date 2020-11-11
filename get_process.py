@@ -10,11 +10,11 @@ class Process:
     # TODO: calculate the calendare week of month for third 
     def makeRange(self):
         date = self.date
-        last_day_of_month = calendar.monthrange(date.year,11)[1]
+        last_day_of_month = calendar.monthrange(date.year,9)[1]
 
 
-        start = datetime.date(date.year,11,1)
-        end = datetime.date(date.year,date.month,last_day_of_month)
+        start = datetime.date(date.year,9,1)
+        end = datetime.date(date.year,9,last_day_of_month)
 
         dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]  
 
@@ -30,6 +30,7 @@ class Process:
 
         week = 0
         index = 0
+        print(dates_arr)
         while(True):
             
             if(dates_arr[index].strftime("%a") == "Sun"):
@@ -37,10 +38,11 @@ class Process:
             
             # print(dates_arr[index].day, self.date.day)
             # if (dates_arr[index].strftime("%d") == self.date.strftime("%d")):
-            if(dates_arr[index].day == self.date.day):
-                return week, self.date.strftime("%-d-%a")
+            # if(dates_arr[index].day == self.date.day):
+                # return week, self.date.strftime("%b %-d-%a")
                 # break
-            
+            if(dates_arr[index].strftime("%a") == "Mon" and week == 3):
+                return dates_arr[index], dates_arr[index].strftime("%a")
   
             if (index + 1 > len(dates_arr)):
                 return week
