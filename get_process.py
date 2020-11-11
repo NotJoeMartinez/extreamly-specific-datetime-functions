@@ -7,13 +7,13 @@ class Process:
         self.date = date
 
 
-    # TODO: calculate the calendare week of month 
+    # TODO: calculate the calendare week of month for third 
     def makeRange(self):
         date = self.date
-        last_day_of_month = calendar.monthrange(date.year,date.month)[1]
+        last_day_of_month = calendar.monthrange(date.year,11)[1]
 
 
-        start = datetime.date(date.year,date.month,1)
+        start = datetime.date(date.year,11,1)
         end = datetime.date(date.year,date.month,last_day_of_month)
 
         dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]  
@@ -22,7 +22,7 @@ class Process:
 
         return dates_generated 
 
-    def calWeek(self):
+    def threeCalWeek(self):
 
         dates_arr = self.makeRange()
         # print(dates_arr, self.date)
@@ -38,7 +38,7 @@ class Process:
             # print(dates_arr[index].day, self.date.day)
             # if (dates_arr[index].strftime("%d") == self.date.strftime("%d")):
             if(dates_arr[index].day == self.date.day):
-                return week
+                return week, self.date.strftime("%-d-%a")
                 # break
             
   
@@ -48,7 +48,6 @@ class Process:
             else:
                 index += 1
     
-    def get_third_mon(self):
         
 
 
@@ -61,11 +60,11 @@ def test_1_12():
         obj = Process(datetime.datetime(2019,1,i))
         print(obj.calWeek())
 
-def test_calWeek():
+def test_threeCalWeek():
     obj=Process(datetime.datetime(2019,1,15))
-    print(obj.calWeek())
+    print(obj.threeCalWeek())
 
 
 
-# test_calWeek()
+test_threeCalWeek()
 # test_1_12()
