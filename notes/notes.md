@@ -508,3 +508,10 @@ count up each day until the third calweekOfMonth() the proceading year
 
 
 
+check this out. the original spreadsheet was getting the calendar week of month by adding 7 to the calendar day of the month
+
+```python
+d = day of month
+g = calendar day of week
+calWeekOfMonh=INT(((7+D12)-G12)/7)
+```

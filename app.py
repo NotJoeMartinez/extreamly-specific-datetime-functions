@@ -27,6 +27,8 @@ for date in dates_generated:
     # array that we will append to array rows in line 19
     sub_rows=[]
 
+    
+
     # date Id
     dateId = date_methods.dateId(date)
     sub_rows.append(dateId)

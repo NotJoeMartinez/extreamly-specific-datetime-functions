@@ -14,10 +14,12 @@ dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-sta
 
 # Test function below 
 
-foo = []
-
 for date in dates_generated:
-    print(get_process.test_threeCalWeek(start,end))
+    print(Process(date).get_day_of_process())
+
+
+
+
 
 
 
