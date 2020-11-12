@@ -4,7 +4,7 @@ import numpy as np
 from objects.get_quarter import Quarter
 from objects.get_term import Term
 
-feilds_11_20 = ["monthNameDay","monthDayYear","monthNameDayYear","dayYear",
+feilds = ["monthNameDay","monthDayYear","monthNameDayYear","dayYear",
 "yearQuarterMonthWeekDay","dayFrom1900","calendarWeekOfMonth","noncalendarWeekOfMonth",
 "calendarWeekOfQuarter","noncalendarWeekOfQuarter"]
 
