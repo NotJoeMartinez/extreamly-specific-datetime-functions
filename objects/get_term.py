@@ -26,7 +26,7 @@ class Term:
 
         # starting at jan 1 1900 make a list of datetime objects up until date 
         start = datetime.datetime(1900,1,1)
-        end = datetime.datetime(2100,1,1)
+        end = datetime.datetime(2101,1,1)
         dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
         # list of "term enders"

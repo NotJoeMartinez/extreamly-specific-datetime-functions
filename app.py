@@ -1,122 +1,48 @@
 import csv, os, datetime 
-import date_methods
+import methods_1_10, methods_11_20, methods_21_30, methods_31_40
 
-filename = "tabels.csv"
 
-feilds = ["dateId","dateType","fullDate","day","dayName","calendarDayOfWeek","noncalendarDayOfWeek",
-"dayOfQuarter","dayOfYear","monthDay","monthNameDay","monthDayYear","monthNameDayYear","dayYear",
-"yearQuarterMonthWeekDay","dayFrom1900","calendarWeekOfMonth","noncalendarWeekOfMonth",
-"calendarWeekOfQuarter","noncalendarWeekOfQuarter","calendarWeekOfYear","noncalendarWeekOfYear",
-"yearQuarterMonthWeek","month","monthName","monthOfQuarter","monthYear","monthNameYear",
-"yearQuarterMonth","termCode","bannerTermCode","termFrom1900","quarter","quarterName",
-"quarterYear","quarterNameYear","yearQuarter","year","quarterMonthWeekDay","quarterMonthWeek",
-"quarterMonth","dayOfProcess","monthOfProcess","monthNameOfProcess","monthWeekOfProcess",
+
+
+col_41_50= ["quarterMonth","dayOfProcess","monthOfProcess","monthNameOfProcess","monthWeekOfProcess",
 "monthDayOfProcess","monthWeekDayOfProcess","isLeapYear","processYear","startDateOfProcess"]
 
+def write_to_final(test=""):
 
-## greates a list of datetime objects for the specified range. To print them formatted us strformat
-start = datetime.datetime.strptime("2018-01-01", "%Y-%m-%d")
-end = datetime.datetime.strptime("2020-01-01", "%Y-%m-%d")
-dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
+    if (test=="year"):
+        ## greates a list of datetime objects for the specified range. To print them formatted us strformat
+        start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
+        end = datetime.datetime.strptime("2020-12-31", "%Y-%m-%d")
+        filename = "year.csv"
 
+    elif(test=="month"):
+        start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
+        end = datetime.datetime.strptime("2019-02-01", "%Y-%m-%d")
+        filename = "month.csv"
 
-# rows[] is needed for line 28
-rows = []
+    else:
+        start = datetime.datetime.strptime("2021-01-01", "%Y-%m-%d")
+        end = datetime.datetime.strptime("2100-12-31", "%Y-%m-%d")
+        filename = "decade.csv"
 
-for date in dates_generated:
-    # array that we will append to array rows in line 19
-    sub_rows=[]
-
-    
-
-    # date Id
-    dateId = date_methods.dateId(date)
-    sub_rows.append(dateId)
-
-    # dateType
-    dateType = date_methods.dateType(date)
-    sub_rows.append(dateType)
-
-    # fullDate
-    fullDate = date_methods.fullDate(date)
-    sub_rows.append(fullDate)
-
-    # day
-    day = date_methods.day(date)
-    sub_rows.append(day)
-
-    # dayName
-    dayName = date_methods.dayName(date)
-    sub_rows.append(dayName)
-
-    # calendarDayOfWeek 
-    calDayOfWeek = date_methods.calDayOfWeek(date)
-    sub_rows.append(calDayOfWeek)
-
-    # noncalendarDayOfWeek" 
-    nonCalDayOfWeek = date_methods.nonCalDayOfWeek(date)
-    sub_rows.append(nonCalDayOfWeek)
-
-    # dayOfQuarter
-    dayOfQuarter = date_methods.dayOfQuarter(date)
-    sub_rows.append(dayOfQuarter)
-
-    # dayOfYear
-    dayofyear = date_methods.dayOfYear(date)
-    sub_rows.append(dayofyear)
-
-    # monthDay 
-    monthDay = date_methods.monthDay(date)
-    sub_rows.append(monthDay)
-
-    # monthNameDay
-    monthdayname = date_methods.monthNameDay(date)
-    sub_rows.append(monthdayname)
-
-    # monthDayYear
-    mdy = date_methods.monthDayYear(date)
-    sub_rows.append(mdy)
-
-    # monthNameDayYear
-    mndy = date_methods.monthNameDayYear(date)
-    sub_rows.append(mndy)
-
-    # dayYear 
-    dayYear = date_methods.dayYear(date)
-    sub_rows.append(dayYear)
-
-    # yearQuarterMonthWeekDay 
-    yearQuarterMonthWeekDay = date_methods.yearQuarterMonthWeekDay(date)
-    sub_rows.append(yearQuarterMonthWeekDay)
-
-    # yearQuarterMonthWeek
-    yearQuarterMonthWeek =  date_methods.yearQuarterMonthWeek(date)
-    sub_rows.append(yearQuarterMonthWeek)
-    
-    # days from 1900
-    dayFrom1900 = date_methods.dayFrom1900(date)
-    sub_rows.append(dayFrom1900)
-    
-    # calWeekOfMonth
-    calWeekOfMonth = date_methods.calWeekOfMonth(date)
-    sub_rows.append(calWeekOfMonth)
-
-    # nonCalWeekOfMonth
-    nonCalWeekOfMonth = date_methods.nonCalWeekOfMonth(date)
-    sub_rows.append(nonCalWeekOfMonth)
-
-    # TermCode 
-    termcode = date_methods.termCode(date)
-    sub_rows.append(termcode)
+    dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
 
-    #### array manipulation ends here #### 
-    #append to rows in row 19    
-    rows.append(sub_rows)
+    # rows[] is needed for line 28
+    rows = []
+
+    for date in dates_generated:
+        # array that we will append to array rows in line 19
+        sub_rows=[]
 
 
 
-with open(filename, 'w') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(feilds)
-    writer.writerows(rows)
+        rows.append(sub_rows)
+
+
+    with open(filename, 'w') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(methods_31_40.feilds)
+        writer.writerows(rows)
+
+write_to_final("")
