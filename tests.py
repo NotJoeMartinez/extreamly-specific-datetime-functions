@@ -3,7 +3,7 @@ import datetime
 import os
 import csv
 import app
-import methods_11_20, methods_21_30, methods_31_40
+import methods_1_10, methods_11_20, methods_21_30, methods_31_40
 # from get_term import Term
 # from objects.get_process import Process
 
@@ -38,8 +38,7 @@ def test_csv():
 # check for diffrences between csv files
 import pandas as pd
 def diff_check():
-    temp=pd.read_csv("csvs/accurate_sample_data.csv",usecols=methods_31_40.feilds)
-    # temp_test =  pd.read_csv("1-10.csv", usecols=app.feilds1)
+    temp=pd.read_csv("csvs/sample_data.csv",usecols=methods_31_40.feilds)
     temp.to_csv('sample_31_40.csv')
 
 

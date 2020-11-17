@@ -1,0 +1,1 @@
+bannerTermCode,termFrom1900,quarter,quarterName,quarterYear,quarterNameYear,yearQuarter,year,quarterMonthWeekDay,quarterMonthWeek,quarterMonth,dayOfProcess,monthOfProcess,monthNameOfProcess,monthWeekOfProcess,monthDayOfProcess,monthWeekDayOfProcess,isLeapYear,processYear,startDateOfProcess

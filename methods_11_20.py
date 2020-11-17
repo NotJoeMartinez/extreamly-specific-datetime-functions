@@ -21,7 +21,8 @@ def monthNameDayYear(date):
     return mndy 
 
 def dayYear(date):
-    dayYear = dayOfYear(date)+"/"+date.strftime("%Y")
+    doy = date.strftime("%-j")
+    dayYear = doy +"/"+date.strftime("%Y")
     return dayYear
 
 def yearQuarterMonthWeekDay(date):
@@ -47,15 +48,19 @@ def dayFrom1900(date):
 
     return daysfrom.days
 
-def get_week_of_month(year, month, day):
-    x = np.array(calendar.monthcalendar(year, month))
-    week_of_month = np.where(x==day)[0][0] 
-    return(week_of_month)
+# def get_week_of_month(date):
+#     x = np.array(calendar.monthcalendar(date.year, date.month))
+#     week_of_month = np.where(x==date.day)[0][0] 
+#     return(week_of_month)
 
 def calWeekOfMonth(date):
     calendar.setfirstweekday(6)
-    
-    return get_week_of_month(date.year,date.month,date.day)
+
+    x = np.array(calendar.monthcalendar(date.year, date.month))
+    week_of_month = np.where(x==date.day)[0][0] 
+
+
+    return int(week_of_month)
 
 def nonCalWeekOfMonth(date):
     day = date.strftime("%d")

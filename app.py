@@ -7,11 +7,11 @@ col_41_50= ["quarterMonth","dayOfProcess","monthOfProcess","monthNameOfProcess",
 
 def write_to_final(test=""):
 
-    if (test=="year"):
+    if (test=="sample"):
         ## greates a list of datetime objects for the specified range. To print them formatted us strformat
         start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
         end = datetime.datetime.strptime("2020-12-31", "%Y-%m-%d")
-        filename = "year.csv"
+        filename = "sample_of_mine.csv"
 
     elif(test=="month"):
         start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
@@ -27,11 +27,22 @@ def write_to_final(test=""):
 
 
     # rows[] is needed for line 28
-    rows = []
+    # use this to itterat through modules methods 
+    # from inspect import getmembers, isfunction
+    # m_1_10 = [o for o in getmembers(methods_1_10) if isfunction(o[1])]
+    # m_11_20 = [o for o in getmembers(methods_11_20) if isfunction(o[1])]
+    # m_21_30 = [o for o in getmembers(methods_21_30) if isfunction(o[1])]
+    # m_31_40 = [o for o in getmembers(methods_31_40) if isfunction(o[1])]
 
+    rows = []
     for date in dates_generated:
         # array that we will append to array rows in line 19
         sub_rows=[]
+        for name, val in methods_31_40.__dict__.items():
+            if callable(val):
+                if (isinstance(val(date), str) or isinstance(val(date), int)):
+                    print(val)
+                    sub_rows.append(val(date))
 
 
 
@@ -39,8 +50,9 @@ def write_to_final(test=""):
 
 
     with open(filename, 'w') as csvfile:
+    
         writer = csv.writer(csvfile)
         writer.writerow(methods_31_40.feilds)
         writer.writerows(rows)
 
-write_to_final("")
+write_to_final("sample")
