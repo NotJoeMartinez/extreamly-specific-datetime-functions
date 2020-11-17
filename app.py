@@ -11,7 +11,7 @@ def write_to_final(test=""):
         ## greates a list of datetime objects for the specified range. To print them formatted us strformat
         start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
         end = datetime.datetime.strptime("2020-12-31", "%Y-%m-%d")
-        filename = "sample_of_mine.csv"
+        filename = ""
 
     elif(test=="month"):
         start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
@@ -21,7 +21,7 @@ def write_to_final(test=""):
     else:
         start = datetime.datetime.strptime("2021-01-01", "%Y-%m-%d")
         end = datetime.datetime.strptime("2100-12-31", "%Y-%m-%d")
-        filename = "decade.csv"
+        filename = "csvs/31-40/full_31_40.csv"
 
     dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
@@ -41,7 +41,6 @@ def write_to_final(test=""):
         for name, val in methods_31_40.__dict__.items():
             if callable(val):
                 if (isinstance(val(date), str) or isinstance(val(date), int)):
-                    print(val)
                     sub_rows.append(val(date))
 
 
@@ -55,4 +54,4 @@ def write_to_final(test=""):
         writer.writerow(methods_31_40.feilds)
         writer.writerows(rows)
 
-write_to_final("sample")
+write_to_final("")

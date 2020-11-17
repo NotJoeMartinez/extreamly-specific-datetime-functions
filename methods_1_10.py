@@ -13,7 +13,7 @@ def dateId(date):
 
 # This column is 'Date' for all rows
 def dateType(date):
-    return "date"
+    return "Date"
 
 # Standard SQL datetime value in the format of year-month-day 00:00:00.000 (2020-04-01 00:00:00.000)
 def fullDate(date):

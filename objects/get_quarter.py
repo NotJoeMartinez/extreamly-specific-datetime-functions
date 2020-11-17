@@ -1,5 +1,6 @@
 # https://realpython.com/python3-object-oriented-programming/
 import datetime
+import math
 class Quarter:
 
     def __init__(self, date):
@@ -132,8 +133,15 @@ class Quarter:
             return month - 9
     
     def calendarWeekOfQuarter(self):
-        # determine date and quarter
         date = self.date
+        # I = Day of quarter
+        doc = self.dayOfQuarter()
+        # G = Cal Day of week
+        calDayofWeek = int(date.strftime("%w")) + 1
+        # =INT(((7+I)-G)/7)
+        final = ((7 + doc) - calDayofWeek)/7
+        return int(final)
+        # determine date and quarter
         quarter = self.quarter()
 
         q_dict = {
@@ -174,7 +182,9 @@ class Quarter:
     
         
     def nonCalWeekOfQuarter(self):
-        return self.calendarWeekOfQuarter() + 1
+        i = self.dayOfQuarter()
+
+        return int( ((i-1)/7) + 1 )
 
 
     def monthOfQuarter(self):

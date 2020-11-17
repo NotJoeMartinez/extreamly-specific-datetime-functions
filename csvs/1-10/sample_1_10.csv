@@ -1,4 +1,3 @@
-dateId,dateType,fullDate,day,dayName,calendarDayOfWeek,noncalendarDayOfWeek,dayOfQuarter,dayOfYear,monthDay
 20190101,Date,2019-01-01 00:00:00.000,1,Tuesday,3,1,1,1,1/1
 20190102,Date,2019-01-02 00:00:00.000,2,Wednesday,4,2,2,2,1/2
 20190103,Date,2019-01-03 00:00:00.000,3,Thursday,5,3,3,3,1/3

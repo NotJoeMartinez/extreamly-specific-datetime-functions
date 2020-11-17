@@ -46,7 +46,7 @@ def dayFrom1900(date):
     # subtract nineteen from current datetime object
     daysfrom = date - nineteen
 
-    return daysfrom.days
+    return daysfrom.days + 2
 
 # def get_week_of_month(date):
 #     x = np.array(calendar.monthcalendar(date.year, date.month))
@@ -54,13 +54,15 @@ def dayFrom1900(date):
 #     return(week_of_month)
 
 def calWeekOfMonth(date):
-    calendar.setfirstweekday(6)
+    calDayofWeek = int(date.strftime("%w")) + 1
+    dom = date.strftime("%-d") 
+    # calendar.setfirstweekday(6)
 
-    x = np.array(calendar.monthcalendar(date.year, date.month))
-    week_of_month = np.where(x==date.day)[0][0] 
+    # x = np.array(calendar.monthcalendar(date.year, date.month))
+    # week_of_month = np.where(x==date.day)[0][0] 
 
 
-    return int(week_of_month)
+    return int(((int(dom)+ 7) - calDayofWeek) / 7 )
 
 def nonCalWeekOfMonth(date):
     day = date.strftime("%d")

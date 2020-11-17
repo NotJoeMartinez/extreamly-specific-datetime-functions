@@ -13,7 +13,9 @@ def calendarWeekOfYear(date):
     return date.strftime("%-U")
 
 def nonCalWeekOfYear(date):
-    return int(date.strftime("%U")) + 1
+    doy = date.strftime("%j")
+    ncwoy = ((int(doy) - 1)/7) + 1
+    return int(ncwoy)
 
 def yearQuarterMonthWeek(date):
     year = date.strftime("%Y")
@@ -25,7 +27,7 @@ def yearQuarterMonthWeek(date):
     day = date.strftime("%d") 
     # week 
     week = math.ceil(int(day)/7)
-    return "{}{}{}".format(year,quart,month)
+    return "{}{}{}{}".format(year,quart,month,week)
 
 def month(date):
     return date.strftime("%-m")
