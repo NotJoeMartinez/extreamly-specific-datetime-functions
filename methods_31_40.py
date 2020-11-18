@@ -51,12 +51,3 @@ def quarterMonthWeek(date):
     week = math.ceil(int(day)/7)
     return "{}{}{}".format(quart,month,week) 
 
-# sub_rows.append(methods_31_40.bannerTermCode(date))
-# sub_rows.append(methods_31_40.termFrom1900(date))
-# sub_rows.append(methods_31_40.quarter(date))
-# sub_rows.append(methods_31_40.quarterName(date))
-# sub_rows.append(methods_31_40.quarterNameYear(date))
-# sub_rows.append(methods_31_40.yearQuarter(date))
-# sub_rows.append(methods_31_40.year(date))
-# sub_rows.append(methods_31_40.quarterMonthWeekDay(date))
-# sub_rows.append(methods_31_40.quarterMonthWeek(date))

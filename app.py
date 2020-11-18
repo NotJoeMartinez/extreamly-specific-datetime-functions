@@ -26,13 +26,6 @@ def write_to_final(test=""):
     dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
 
-    # rows[] is needed for line 28
-    # use this to itterat through modules methods 
-    # from inspect import getmembers, isfunction
-    # m_1_10 = [o for o in getmembers(methods_1_10) if isfunction(o[1])]
-    # m_11_20 = [o for o in getmembers(methods_11_20) if isfunction(o[1])]
-    # m_21_30 = [o for o in getmembers(methods_21_30) if isfunction(o[1])]
-    # m_31_40 = [o for o in getmembers(methods_31_40) if isfunction(o[1])]
 
     rows = []
     for date in dates_generated:
