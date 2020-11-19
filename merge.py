@@ -1,29 +1,36 @@
-"""
- Python Script:
-  Combine/Merge multiple CSV files using the Pandas library
-"""
-import os
-from glob import glob
-import pandas as pdlib
+import pandas as pd
 
-# Produce a single CSV after combining all files
-def produceOneCSV(list_of_files, file_out):
-   # Consolidate all CSV files into one object
-   result_obj = pdlib.concat([pdlib.read_csv(file) for file in list_of_files])
-   # Convert the above object into a csv file and export
-   result_obj.to_csv(file_out, index=False, encoding="utf-8")
+def f_1_20():
+    """Read two CSV as dataframe"""
+    data_1_10= pd.read_csv('csvs/full/full_1_10.csv')
+    data_11_20 = pd.read_csv('csvs/full/full_11_20.csv')
 
-# Move to the path that holds our CSV files
-# csv_file_path = 'csvs/full/'
-path = "csvs/full/{}.csv"
-foo = ["csvs/full/full_1_10.csv","csvs/full/full_11_20.csv"] 
-# os.chdir(csv_file_path)
+    """Join the DataFrame"""
+    new_file = data_1_10.join(data_11_20, lsuffix="_left", rsuffix="_right")
 
-# List all CSV files in the working dir
-# file_pattern = ".csv"
-# list_of_files = [file for file in glob('*.{}'.format(file_pattern))]
-# print(list_of_files)
+    """Save the Pandas Dataframe to a CSV file"""
+    new_file.to_csv('1_20.csv', index=False)
 
-file_out = "merged.csv"
 
-produceOneCSV(foo, file_out)
+def f_21_40():
+    data_21_30= pd.read_csv('csvs/full/full_21_30.csv')
+    data_31_40 = pd.read_csv('csvs/full/full_31_40.csv')
+
+    """Join the DataFrame"""
+    new_file = data_21_30.join(data_31_40, lsuffix="_left", rsuffix="_right")
+
+    """Save the Pandas Dataframe to a CSV file"""
+    new_file.to_csv('21_40.csv', index=False)
+
+
+
+def f_all():
+    data_1_20 = pd.read_csv('1_20.csv')
+    data_21_40 = pd.read_csv('21_40.csv')
+    new_file = data_1_20.join(data_21_40, lsuffix="_left", rsuffix="_right")
+    new_file.to_csv('full_1_40.csv', index=False)
+
+
+f_1_20()
+f_21_40()
+f_all()
