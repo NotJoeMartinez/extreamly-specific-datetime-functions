@@ -1,11 +1,18 @@
-import pandas as pd 
+import methods_41_50
+import datetime
 
-# data = [1,2,3,4,5]
+date = datetime.datetime.now()
 
-# data = [['Alex',10], ['Bob',12], ['Clarke',13]]
+date2 = datetime.datetime(2020,8,1)
 
-data = {'Name':['Tom', 'Jack', 'Steve', 'Ricky'],'Age':[28,34,29,42]}
-df = pd.DataFrame(data, index=['rank1','rank2','rank3','rank4'])
+date3 = datetime.datetime(2020,9,25)
+
+date4 = datetime.datetime(2020,9,21)
+# date5.strftime("%Y-%m-%d")
+def test_range():
+    for i in range(1,12):
+        date5 = datetime.datetime(2010,i,)
+        print(methods_41_50.monthOfProcess(date5))
 
 
-print(df)
+print(methods_41_50.monthOfProcess(date3))

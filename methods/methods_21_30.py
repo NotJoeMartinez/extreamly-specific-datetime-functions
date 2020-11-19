@@ -60,13 +60,3 @@ def termCode(date):
     return Term(date).get_terms(term_dict)
 
 
-# sub_rows.append(methods_21_30.calendarWeekOfYear(date))
-# sub_rows.append(methods_21_30.nonCalWeekOfYear(date))
-# sub_rows.append(methods_21_30.yearQuarterMonthWeek(date))
-# sub_rows.append(methods_21_30.month(date))
-# sub_rows.append(methods_21_30.monthName(date))
-# sub_rows.append(methods_21_30.monthOfQuarter(date))
-# sub_rows.append(methods_21_30.monthYear(date))
-# sub_rows.append(methods_21_30.monthNameYear(date))
-# sub_rows.append(methods_21_30.yearQuarterMonth(date))
-# sub_rows.append(methods_21_30.termCode(date))

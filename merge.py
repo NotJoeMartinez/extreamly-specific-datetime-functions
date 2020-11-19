@@ -16,10 +16,8 @@ def f_21_40():
     data_21_30= pd.read_csv('csvs/full/full_21_30.csv')
     data_31_40 = pd.read_csv('csvs/full/full_31_40.csv')
 
-    """Join the DataFrame"""
     new_file = data_21_30.join(data_31_40, lsuffix="_left", rsuffix="_right")
 
-    """Save the Pandas Dataframe to a CSV file"""
     new_file.to_csv('21_40.csv', index=False)
 
 

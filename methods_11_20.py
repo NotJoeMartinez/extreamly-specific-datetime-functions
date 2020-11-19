@@ -56,12 +56,7 @@ def dayFrom1900(date):
 def calWeekOfMonth(date):
     calDayofWeek = int(date.strftime("%w")) + 1
     dom = date.strftime("%-d") 
-    # calendar.setfirstweekday(6)
-
-    # x = np.array(calendar.monthcalendar(date.year, date.month))
-    # week_of_month = np.where(x==date.day)[0][0] 
-
-
+ 
     return int(((int(dom)+ 7) - calDayofWeek) / 7 )
 
 def nonCalWeekOfMonth(date):
