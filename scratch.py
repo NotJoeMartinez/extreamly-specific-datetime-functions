@@ -1,18 +1,20 @@
-import methods_41_50
-import datetime
+import calendar
+import datetime as dt
+from  objects.get_process import Process 
 
-date = datetime.datetime.now()
-
-date2 = datetime.datetime(2020,8,1)
-
-date3 = datetime.datetime(2020,9,25)
-
-date4 = datetime.datetime(2020,9,21)
-# date5.strftime("%Y-%m-%d")
-def test_range():
-    for i in range(1,12):
-        date5 = datetime.datetime(2010,i,)
-        print(methods_41_50.monthOfProcess(date5))
+dates = [
+        dt.datetime(2010,5,5),
+        dt.datetime(2011,5,5),
+        dt.datetime(2012,5,5),
+        dt.datetime(2013,5,5),
+        dt.datetime(2014,5,5),
+        dt.datetime(2015,5,5)
+]
 
 
-print(methods_41_50.monthOfProcess(date3))
+
+for i in dates:
+    print(Process(i).get_day_of_process())
+
+
+
