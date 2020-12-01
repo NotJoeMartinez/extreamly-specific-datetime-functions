@@ -10,41 +10,15 @@ class Process:
         self.process_range = []
     
 
-    
-    def get_month_of_process(self):
-        date = self.date
-
-        # print(date.month, date.day, self.get_day_of_process())
-
-        while True:
-            date 
-            print(date)
-
-        def find_thrid_mon(date, previous=""):
-
-                    if (previous != ""):
-                        y = date.year - 1 
-                    else: 
-                        y = date.year 
-
-                    c = calendar.Calendar(firstweekday=calendar.MONDAY) 
-                    year = y ; month = 9
-                    monthcal = c.monthdatescalendar(year,month)
-                
-                    third_mon = [day for week in monthcal for day in week if \
-                            day.weekday() == calendar.MONDAY and \
-                            day.month == month][2]
-
-                    # turn thrid_mon into a datetime object  
-                    dt = datetime.datetime.combine(third_mon, datetime.datetime.min.time())
-                    return dt
-
-
-    def get_start_date_of_process(self): 
+    def get_start_date_of_process(self, return_obj="", return_last=""): 
             date = self.date
+
 
             # get year
             y = date.year
+
+            if return_last !="":
+                y -= 1
             
             year = y ; month = 9
 
@@ -65,6 +39,10 @@ class Process:
             # get wednesday by adding two 
             wed = mon + datetime.timedelta(days=2)
 
+            # check if optional arg is non null 
+            if return_obj != "":
+                return wed
+
             # Turn wed into a full date format
             foo = wed.strftime("%Y-%m-%d %H:%M:%S.%f") 
 
@@ -81,12 +59,111 @@ class Process:
     
 
     def get_day_of_process(self):
-        print(self.get_start_date_of_process())
+
+        today = self.date
+        last_start = self.get_start_date_of_process(True,True)
+        start = self.get_start_date_of_process(True)
+
+        if today < start:
+            delta = today - last_start 
+            return delta.days + 1
+
+        elif today >= start: 
+            delta = today - start
+            return delta.days + 1
+
+        else: 
+            print("error starting on get_process line 91")
 
 
 
 
+        # turn first into datetime object
 
+    def get_range(self):
+        """
+        this finds the dates between the start date of process and 
+        the first calendar week of proceading october 
+        """
+        date = self.date
+
+
+        start = self.get_start_date_of_process(True)            
+
+        # this looks ugly but it returns the first cal monday of october of the current year
+        y = date.year; month = date.month
+        year = y  
+        c = calendar.Calendar(firstweekday=0) 
+        monthcal = c.monthdatescalendar(year,month)
+        foo = [day for week in monthcal for day in week if \
+                    day.weekday() == calendar.MONDAY and \
+                    day.month == month][0]
+
+        # end date to datetime object 
+        end = datetime.datetime.combine(foo, datetime.datetime.min.time())
+
+        dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
+
+
+        return dates_generated
+
+    def is_in_first_calweek(self):
+        """
+        given a date determine if it is in the first week of month STARTING SUNDAY 
+
+        """
+        date = self.date
+        y = date.year
+
+        
+        year = y ; month = date.month
+
+        # creates a calendar object, sets first weekday to monday
+        c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
+
+        # this returns an itterator 
+        monthcal = c.monthdatescalendar(year,month)
+
+        # get the third monday        
+        first_sun = [day for week in monthcal for day in week if \
+                    day.weekday() == calendar.SUNDAY and \
+                    day.month == month][0]
+
+        # turn first_sun into a datetime object  
+        sun = datetime.datetime.combine(first_sun, datetime.datetime.min.time())
+
+        if self.date <= sun:
+            return True 
+        else: 
+            return False
+
+# Bens cell is 618-697-6160
+
+    def get_month_of_process(self):
+        today = self.date
+        last_start = self.get_start_date_of_process(True,True)
+        start = self.get_start_date_of_process(True)
+
+        # if it is greater than start of process and not in the first cal week return  
+        delta1 = today.month + 4
+        delta2 = today.month - start.month
+
+        if today < start:
+            if self.is_in_first_calweek():
+                return delta1 - 1 
+            else:
+                return delta1 
+
+        elif today > start:
+            if self.is_in_first_calweek():
+               delta2  
+            else:
+                return delta2 + 1
+
+        elif today == start:
+            return 1
+        else:
+            print(today, start)
 
 
             

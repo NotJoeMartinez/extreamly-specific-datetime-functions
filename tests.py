@@ -17,7 +17,7 @@ def test_method():
     # Test function below 
 
     for date in dates_generated:
-        print(methods_41_50.monthOfProcess(date))
+        print(methods_41_50.monthOfProcess(date), date.strftime("%m-%d"))
 
 def test_csv():
     # Stuff for testing csv
