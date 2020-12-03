@@ -9,7 +9,6 @@ class Process:
         self.date = date
         self.process_range = []
     
-
     def get_start_date_of_process(self, return_obj="", return_last=""): 
             date = self.date
 
@@ -48,7 +47,6 @@ class Process:
 
             return foo
 
-            
     def check_leap(self):
         date = self.date
 
@@ -57,7 +55,6 @@ class Process:
         else:
             return 0
     
-
     def get_day_of_process(self):
 
         today = self.date
@@ -135,8 +132,6 @@ class Process:
         else: 
             return False
 
-# Bens cell is 618-697-6160
-
     def get_month_of_process(self):
         today = self.date
         start = self.get_start_date_of_process(True)
@@ -172,13 +167,32 @@ class Process:
             else:
                 return delta2 + 1 
 
+    def get_month_name_of_process(self):
+        """
+        This is funky. This starts as "September" on the process start date 
+        used with dayOfProcess. It remains as "September" until calendarWeekOfMonth 
+        resets to 1, in which case it changes to "October". It will go back to 
+        "September" for "month 13".
+        """
+        today = self.date
+        start = self.get_start_date_of_process(True)
+
+        month_map = {
+            4 : "December",
+            5 : "January",
+            6 : "February",
+            7 : "March",
+            8 : "April",
+            9 : "May",
+            10 : "June",
+            11 : "July",
+            12 : "August",
+            2 : "October",
+            3 : "November",
+            1 : "September",
+            13 : "September" 
+        }
+
+        return month_map[self.get_month_of_process()]
 
 
-            
-
-             
-
-            
-
-
-        

@@ -18,7 +18,7 @@ def test_method():
     file = "tests/me_{}.csv".format(fname)
     for date in dates_generated:
         with open(file, 'a') as f:
-            foo = date_methods.monthOfProcess(date)
+            foo = date_methods.monthNameOfProcess(date)
             # print(foo)
             # f.write(str(foo)+",{}\n".format(date.strftime("%b%d - %a")))
             f.write(str(foo)+",\n")
