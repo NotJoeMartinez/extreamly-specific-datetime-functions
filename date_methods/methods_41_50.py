@@ -30,3 +30,6 @@ def monthNameOfProcess(date):
 
 def is_leap_year(date):
     return Process(date).check_leap()
+
+def monthWeekOfProcess(date):
+    return Process(date).get_month_week_of_process() 

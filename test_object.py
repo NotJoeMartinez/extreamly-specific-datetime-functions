@@ -28,3 +28,7 @@ def test_month_range():
         print(Process(foo).get_month_of_process(), foo.strftime("%b, %-d"))
 
 
+def foo():
+    print(Process(dt.datetime(2019,5,31)).get_month_week_of_process())
+
+foo()

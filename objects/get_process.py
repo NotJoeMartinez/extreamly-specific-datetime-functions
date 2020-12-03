@@ -196,3 +196,33 @@ class Process:
         return month_map[self.get_month_of_process()]
 
 
+    def get_month_week_of_process(self):
+        """
+        This is funky. A (integer?) starting with the monthOfProcess value as the first 1-2 digits 
+        and ending with a modified calendarWeekOfMonth as the last 2 digits. Take for 
+        example the week that connects October 2019 - November 2019. The last 5 days of 
+        October have "calendarWeekOfMonth" of 4, while the first 2 days of November have a 
+        "calendarWeekOfMonth" of 0 (as "calendarWeekOfMonth isn't set to 1 until the first Sunday of a month). 
+        This "monthWeekOfProcess" column will use "4" for those 5 days in October and will use "5" for 
+        those first 2 days in November.
+        """
+        
+        today = self.date.date()
+        year = today.year
+        month = today.month 
+
+        c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
+        # creates a 2D array of datetime objects for all week days in the month 
+        monthcal = c.monthdatescalendar(year,month)
+
+        # month of process
+        month_of_process = self.get_month_of_process()
+        # week of month
+
+        for counter, week in enumerate(monthcal):
+            if today in week:
+                week_of_month = counter
+            
+
+        # find the index of the current date within this 2D array
+        return "{}0{}".format(month_of_process,week_of_month)
