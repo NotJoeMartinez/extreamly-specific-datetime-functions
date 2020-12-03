@@ -119,14 +119,14 @@ class Process:
         year = y ; month = date.month
 
         # creates a calendar object, sets first weekday to monday
-        c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
+        c = calendar.Calendar(firstweekday=calendar.SATURDAY) 
 
         # this returns an itterator 
         monthcal = c.monthdatescalendar(year,month)
 
         # get the third monday        
         first_sun = [day for week in monthcal for day in week if \
-                    day.weekday() == calendar.SUNDAY and \
+                    day.weekday() == calendar.SATURDAY and \
                     day.month == month][0]
 
         # turn first_sun into a datetime object  
@@ -144,26 +144,34 @@ class Process:
         last_start = self.get_start_date_of_process(True,True)
         start = self.get_start_date_of_process(True)
 
-        # if it is greater than start of process and not in the first cal week return  
         delta1 = today.month + 4
         delta2 = today.month - start.month
-
+        """
+        if today is less than the start date of the process for this year,
+        check if today it is in the first calendar week of the current month, 
+        if today is in the first calendar week of the current month,
+        return (current month number + 4) - 1.
+        otherwise return current month number + 1 
+        """
         if today < start:
             if self.is_in_first_calweek():
                 return delta1 - 1 
             else:
                 return delta1 
-
         elif today > start:
+            # if it's greater than start date and in september return 1
+            if today.month == 9:
+                return 1
+            # if it's greater than start date but not in september return delta2
             if self.is_in_first_calweek():
-               delta2  
+               return delta2  
             else:
-                return delta2 + 1
+                return delta2 + 1 
 
         elif today == start:
             return 1
         else:
-            print(today, start)
+            print("something broke on 177")
 
 
             

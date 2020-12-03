@@ -127,9 +127,9 @@ time we're using a convention more used by TTU. These are coded suce that 5 = Sp
  Numerical value counting days from the monday in the 3rd "calendarWeekOfMonth" in September. This date is labeled as "1" and counts up until the next such date of the next year. 9/16/2019 has value of 1, and counts up to 371 on 9/20/2020, as 9/21/2020 is the 3rd calendaryWeekofMonth Monday, and thus resets the count at 1. It seems this "3rd Wednesday" is being used as a "start Of Process" date for the following columns.
 
  [monthOfProcess] 43
- This is funky. This starts at 1 after the process start date identifed from "dayOfProcess" above. So, those dates in September will be listed as 1. This does
-
-not increment to 2 until calendarWeekOfMonth resets to 1 in October. Once calendarWeekOfMonth resets to 1 for the following September, this will have a value of "13" for all days before the next start of process date.
+ This is funky. This starts at 1 after the process start date identifed from "dayOfProcess" above. So, those dates in September
+ will be listed as 1. This does not increment to 2 until calendarWeekOfMonth resets to 1 in October. Once calendarWeekOfMonth
+ resets to 1 for the following September, this will have a value of "13" for all days before the next start of process date.
 
  [monthNameOfProcess] 44
  This is funky. This starts as "September" on the process start date used with dayOfProcess. It remains as "September" until calendarWeekOfMonth resets to 1, in which case it changes to "October". It will go back to "September" for "month 13".
