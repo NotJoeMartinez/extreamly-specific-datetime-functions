@@ -113,25 +113,24 @@ class Process:
 
         """
         date = self.date
-        y = date.year
 
-        
-        year = y ; month = date.month
+        year = date.year ; month = date.month
 
-        # creates a calendar object, sets first weekday to monday
         c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
-        # this returns an itterator 
+        # creates a 2D array of datetime objects for all week days in the month 
         monthcal = c.monthdatescalendar(year,month)
 
-        # get the third monday        
-        first_sun = [day for week in monthcal for day in week if \
-                    day.weekday() == calendar.SUNDAY and \
-                    day.month == month][0]
+        # get all sundays of the current month and save them to first_sun 
+        first_sun = []
+        for week in monthcal:
+            for day in week:
+                if day.weekday() == calendar.SUNDAY and day.month == month:
+                    first_sun.append(day)
 
         # turn first_sun into a datetime object  
-        sun = datetime.datetime.combine(first_sun, datetime.datetime.min.time())
+        sun = datetime.datetime.combine(first_sun[0], datetime.datetime.min.time())
 
-        if self.date <= sun:
+        if self.date < sun:
             return True 
         else: 
             return False
@@ -140,9 +139,7 @@ class Process:
 
     def get_month_of_process(self):
         today = self.date
-        last_start = self.get_start_date_of_process(True,True)
         start = self.get_start_date_of_process(True)
-
 
 
         delta1 = today.month + 4
@@ -155,10 +152,12 @@ class Process:
         otherwise return current month number + 1 
         """
         if today < start:
-            if self.is_in_first_calweek() and today.month != 9:
+            # if self.is_in_first_calweek() and today.month != 9:
+            if self.is_in_first_calweek(): 
                 return delta1 - 1 
             else:
                 return delta1 
+
         elif today > start and today.month == 9:
             # if it's greater than start date and in september return 1
             return 1
@@ -170,9 +169,8 @@ class Process:
 
             if self.is_in_first_calweek():
                 return delta2 
-
-        else:
-            return delta2 + 1 
+            else:
+                return delta2 + 1 
 
 
 

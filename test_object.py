@@ -2,7 +2,6 @@ import calendar
 import random
 import datetime as dt
 from  objects.get_process import Process 
-import methods_41_50
 
 dates = [
         dt.datetime(2010,5,5),
@@ -28,9 +27,4 @@ def test_month_range():
         foo = dt.datetime(2018,month,day)
         print(Process(foo).get_month_of_process(), foo.strftime("%b, %-d"))
 
-def kill_me():
-    foo = dt.datetime(2019,10,1)
-    Process(foo)
 
-test_month_range()
-# print(get_13_range())
