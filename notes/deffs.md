@@ -121,7 +121,7 @@ time we're using a convention more used by TTU. These are coded suce that 5 = Sp
  quarterMonthWeekDay value without the day as the last 2 digits (2043 for April 15, 2020)
 
  [quarterMonth] 41
- quarterMonthWeek without week as the last digit (204 for April 15, 2020) Y2iYbCJaLhbFPY7Yh
+ quarterMonthWeek without week as the last digit (204 for April 15, 2020) 
 
  [dayOfProcess] 42
  Numerical value counting days from the monday in the 3rd "calendarWeekOfMonth" in September. This date is labeled as "1" and counts up until the next such date of the next year. 9/16/2019 has value of 1, and counts up to 371 on 9/20/2020, as 9/21/2020 is the 3rd calendaryWeekofMonth Monday, and thus resets the count at 1. It seems this "3rd Wednesday" is being used as a "start Of Process" date for the following columns.

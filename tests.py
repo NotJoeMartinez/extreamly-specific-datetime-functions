@@ -2,7 +2,7 @@ import datetime
 # import date_methods
 import os
 import csv
-import methods_41_50
+import date_methods
 # from get_term import Term
 # from objects.get_process import Process
 
@@ -15,9 +15,14 @@ def test_method():
     dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
     # Test function below 
+    fname = datetime.datetime.now().strftime("%H_%M_%S")
+    file = "scratch/{}.csv".format(fname)
 
     for date in dates_generated:
-        print(methods_41_50.monthOfProcess(date), date.strftime("%m-%d"))
+        with open(file, 'a') as f:
+            foo = date_methods.monthOfProcess(date)
+            # print(foo)
+            f.write(str(foo)+",{}\n".format(date.strftime("%a")))
 
 def test_csv():
     # Stuff for testing csv

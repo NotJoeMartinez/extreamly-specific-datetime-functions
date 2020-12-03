@@ -37,14 +37,14 @@ class Process:
             mon = datetime.datetime.combine(third_mon, datetime.datetime.min.time())
 
             # get wednesday by adding two 
-            wed = mon + datetime.timedelta(days=2)
+            # wed = mon + datetime.timedelta(days=2)
 
             # check if optional arg is non null 
             if return_obj != "":
-                return wed
+                return mon 
 
             # Turn wed into a full date format
-            foo = wed.strftime("%Y-%m-%d %H:%M:%S.%f") 
+            foo = mon.strftime("%Y-%m-%d %H:%M:%S.%f") 
 
             return foo
 
@@ -119,14 +119,13 @@ class Process:
         year = y ; month = date.month
 
         # creates a calendar object, sets first weekday to monday
-        c = calendar.Calendar(firstweekday=calendar.SATURDAY) 
-
+        c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
         # this returns an itterator 
         monthcal = c.monthdatescalendar(year,month)
 
         # get the third monday        
         first_sun = [day for week in monthcal for day in week if \
-                    day.weekday() == calendar.SATURDAY and \
+                    day.weekday() == calendar.SUNDAY and \
                     day.month == month][0]
 
         # turn first_sun into a datetime object  
@@ -144,6 +143,8 @@ class Process:
         last_start = self.get_start_date_of_process(True,True)
         start = self.get_start_date_of_process(True)
 
+
+
         delta1 = today.month + 4
         delta2 = today.month - start.month
         """
@@ -154,24 +155,25 @@ class Process:
         otherwise return current month number + 1 
         """
         if today < start:
-            if self.is_in_first_calweek():
+            if self.is_in_first_calweek() and today.month != 9:
                 return delta1 - 1 
             else:
                 return delta1 
-        elif today > start:
+        elif today > start and today.month == 9:
             # if it's greater than start date and in september return 1
-            if today.month == 9:
-                return 1
+            return 1
             # if it's greater than start date but not in september return delta2
-            if self.is_in_first_calweek():
-               return delta2  
-            else:
-                return delta2 + 1 
-
         elif today == start:
             return 1
+
+        elif today > start: 
+
+            if self.is_in_first_calweek():
+                return delta2 
+
         else:
-            print("something broke on 177")
+            return delta2 + 1 
+
 
 
             
