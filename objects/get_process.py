@@ -133,12 +133,6 @@ class Process:
             return False
 
     def get_month_of_process(self):
-        today = self.date
-        start = self.get_start_date_of_process(True)
-
-
-        delta1 = today.month + 4
-        delta2 = today.month - start.month
         """
         if today is less than the start date of the process for this year,
         check if today it is in the first calendar week of the current month, 
@@ -146,6 +140,13 @@ class Process:
         return (current month number + 4) - 1.
         otherwise return current month number + 1 
         """
+        today = self.date
+        start = self.get_start_date_of_process(True)
+
+
+        delta1 = today.month + 4
+        delta2 = today.month - start.month
+
         if today < start:
             # if self.is_in_first_calweek() and today.month != 9:
             if self.is_in_first_calweek(): 
@@ -195,10 +196,9 @@ class Process:
 
         return month_map[self.get_month_of_process()]
 
-
     def get_month_week_of_process(self):
         """
-        This is funky. A (integer?) starting with the monthOfProcess value as the first 1-2 digits 
+        This is funky. A (integer?) starting with the monthOfProcess  value as the first 1-2 digits 
         and ending with a modified calendarWeekOfMonth as the last 2 digits. Take for 
         example the week that connects October 2019 - November 2019. The last 5 days of 
         October have "calendarWeekOfMonth" of 4, while the first 2 days of November have a 
@@ -214,15 +214,47 @@ class Process:
         c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
         # creates a 2D array of datetime objects for all week days in the month 
         monthcal = c.monthdatescalendar(year,month)
+        
+        week_of_month = "error"
+
+        if monthcal[0][0].month == today.month:
+            start_index = 1 
+        else:
+            start_index = 0
+        # week of month
+        # print(start_index)
+        for counter, week in enumerate(monthcal, start=start_index):
+            if today in week and counter == 0:
+                week_of_month = 5 # this solves 99% of your issues
+                # if last_month[0][0].month == monthcal[0][0].month:
+                #     start_index_last = 1
+                # else:
+                #     start_index_last = 0
+
+                # last_month_list = list(enumerate(last_month, start=start_index_last))
+                # # print(last_month_list[-1][0], "\n")
+                # week_of_month = last_month_list[-1][0]
+
+
+
+            elif today in week:
+                week_of_month = counter 
+
+
+
+            # if today in week and counter == 0:   
+            #     if monthcal[0][0].month != today.month:
+            #         week_of_month = 5
+
+            #     elif monthcal[0][0].month == today.month:
+            #         week_of_month = 1
+
+            # if today in week and week_of_month != :
+            #     week_of_month = counter
+            
 
         # month of process
         month_of_process = self.get_month_of_process()
-        # week of month
-
-        for counter, week in enumerate(monthcal):
-            if today in week:
-                week_of_month = counter
-            
-
+        
         # find the index of the current date within this 2D array
         return "{}0{}".format(month_of_process,week_of_month)

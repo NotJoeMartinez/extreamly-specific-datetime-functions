@@ -1,29 +1,36 @@
 import calendar
 import datetime
 
+def test(day):
+    date = datetime.date(2019,1,1)
+    
+    c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
+    monthcal = c.monthdatescalendar(2019,1)
+    today = datetime.date(2019,1,day)
 
-date = datetime.datetime(2019,1,1)
+    
+    week_of_month = "error"
 
-year = date.year ; month = date.month
+    if monthcal[0][0].month == today.month:
+        start_index = 1 
+    else:
+        start_index = 0 
 
-# creates a calendar object, sets first weekday to monday
-c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
-# c = calendar.Calendar() 
-# this returns an itterator 
-monthcal = c.monthdatescalendar(year,month)
+    for counter, week in enumerate(monthcal, start=start_index):
+        if today in week and counter == 0:
+            # get the max last week of month
+            if today.month == 1:
+                last_month = c.monthdatescalendar(today.year -1,12 )
+            else:
+                last_month = c.monthdatescalendar(today.year,today.month - 1)
 
-# get the third monday        
-# first_sun = [day for week in monthcal for day in week if \
-            # day.weekday() == calendar.MONDAY and \ 
-            # day.month == month][0]
+            last_month_list = list(enumerate(last_month))
+            week_of_month = last_month_list[-1][0]        
+        else:
+            week_of_month = counter
 
-fs = []
+for i in range(1,30):
+    print(test(i))
 
-for week in monthcal:
-    for day in week:
-        if day.weekday() == calendar.SUNDAY and day.month == month:
-            fs.append(day)
-# print(monthcal)
-print(calendar.SUNDAY)
-print(fs)
-print(fs[0])
+
+
