@@ -46,5 +46,5 @@
 - [ ] monthDayOfProcess 46
 - [ ] monthWeekDayOfProcess 47
 - [x] isLeapYear 48
-- [ ] processYear 49
+- [x] processYear 49
 - [x] startDateOfProcess 50

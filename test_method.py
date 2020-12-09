@@ -25,7 +25,7 @@ def test_method(test_file):
     def make_stuff(file, dates_generated): 
         for date in dates_generated:
             with open(file, 'a') as f:
-                foo = date_methods.processYear(date)
+                foo = date_methods.monthWeekOfProcess(date)
                 # print(foo)
                 # f.write(str(foo)+",{}\n".format(date.strftime("%b%d - %a")))
                 f.write(str(foo)+",\n")
@@ -50,4 +50,4 @@ def test_csv():
         writer.writerows(rows)
 
 
-test_method("test_49.txt")
+test_method("test_45.txt")

@@ -216,13 +216,13 @@ class Process:
         monthcal = c.monthdatescalendar(year,month)
         
         week_of_month = "error"
-
+        
+        # determine if the month starts on a sunday
         if monthcal[0][0].month == today.month:
             start_index = 1 
         else:
             start_index = 0
         # week of month
-        # print(start_index)
         for counter, week in enumerate(monthcal, start=start_index):
             if today in week and counter == 0:
                 week_of_month = 5 # this solves 99% of your issues
@@ -244,23 +244,11 @@ class Process:
 
 
 
-            # if today in week and counter == 0:   
-            #     if monthcal[0][0].month != today.month:
-            #         week_of_month = 5
-
-            #     elif monthcal[0][0].month == today.month:
-            #         week_of_month = 1
-
-            # if today in week and week_of_month != :
-            #     week_of_month = counter
-            
-
         # month of process
         month_of_process = self.get_month_of_process()
         
         # find the index of the current date within this 2D array
         return "{}0{}".format(month_of_process,week_of_month)
-
 
     def get_process_year(self):
         """
@@ -280,3 +268,15 @@ class Process:
             return today.year + 1
         else:
             return today.year
+    
+    def get_month_day_of_process(self):
+        """
+         This is also funky. This is starts with the monthOfProcess value and ends with a value counting 
+         days within that month. In general, this counts days up from 1 whenever "monthOfProcess" resets to 1. 
+         However, this does not cleanly count up from 1 once we get to the end of the month and the start of a 
+         new month. It seems a formula for this column is based on the week calculated by "monthWeekOfProcess". 
+         Using our example before of October 2019 - November 2019: 10/31/2019 has an expected value of 226 
+         (2nd "month of process", 26th day since the month started). The following day 11/1/2019 has a value of 234. 
+         I'm guessing the formula for this saw this was a Friday of Week 5 and said the day value must then be 34 
+         (4 full weeks + 6 days = 34).
+        """
