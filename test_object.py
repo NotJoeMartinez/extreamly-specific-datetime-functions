@@ -21,14 +21,12 @@ def test_day_range():
         foo = dt.datetime(2019,10,day)
         print(Process(foo).get_month_of_process(), foo.strftime("%b, %-d, %a"))
 
+# test range of months through 2018
 def test_month_range():
     for month in range(1,12):
         day = random.randint(1,28)
         foo = dt.datetime(2018,month,day)
-        print(Process(foo).get_month_of_process(), foo.strftime("%b, %-d"))
+        print(Process(foo).get_process_year(), foo.strftime("%b, %-d"))
 
 
-def foo():
-    print(Process(dt.datetime(2019,5,31)).get_month_week_of_process())
-
-foo()
+test_month_range()

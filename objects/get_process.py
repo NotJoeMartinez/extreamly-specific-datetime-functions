@@ -226,6 +226,8 @@ class Process:
         for counter, week in enumerate(monthcal, start=start_index):
             if today in week and counter == 0:
                 week_of_month = 5 # this solves 99% of your issues
+
+
                 # if last_month[0][0].month == monthcal[0][0].month:
                 #     start_index_last = 1
                 # else:
@@ -258,3 +260,23 @@ class Process:
         
         # find the index of the current date within this 2D array
         return "{}0{}".format(month_of_process,week_of_month)
+
+
+    def get_process_year(self):
+        """
+         This is a 4 digit year representing the year of the fall term for which we are signing up students. 
+         Whenever we cross over past a new "start of process date" (3rd Wednesday in September), this will 
+         increment by 1. For 9-16-2019, the "processYear" value is 2020, as on this date we are starting to 
+         sign people up for Fall 2020 housing. Once the date cycles around to the next "start of process date" 
+         on 9/21/2020, the year increments to 2021 (as we would have normally started signing up for Fall 2021 
+         starting on/around that date).
+        """
+        today = self.date
+        start_date_of_process = self.get_start_date_of_process(return_obj="True")
+        
+        # if current date is greater than or equal to the start date of process of current year
+        # return the current year plus one, otherwise return the current year 
+        if today >= start_date_of_process:
+            return today.year + 1
+        else:
+            return today.year

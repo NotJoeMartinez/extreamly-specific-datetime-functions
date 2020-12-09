@@ -39,12 +39,12 @@
 - [x] quarterMonthWeekDay 39
 - [x] quarterMonthWeek 40
 - [x] quarterMonth 41
-- [ ] dayOfProcess 42
-- [ ] monthOfProcess 43
-- [ ] monthNameOfProcess 44
+- [x] dayOfProcess 42
+- [x] monthOfProcess 43
+- [x] monthNameOfProcess 44
 - [ ] monthWeekOfProcess 45
 - [ ] monthDayOfProcess 46
 - [ ] monthWeekDayOfProcess 47
-- [ ] isLeapYear 48
+- [x] isLeapYear 48
 - [ ] processYear 49
-- [ ] startDateOfProcess 50
+- [x] startDateOfProcess 50
