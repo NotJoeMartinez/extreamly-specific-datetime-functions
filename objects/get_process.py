@@ -1,6 +1,9 @@
 import datetime
+from datetime import timedelta
 import calendar
 import pandas as pd
+import logging
+
 
 class Process:
 
@@ -217,30 +220,34 @@ class Process:
         
         week_of_month = "error"
         
+        #  logging.basicConfig(filename='debug.log', filemode='w', level=logging.DEBUG)
         # determine if the month starts on a sunday
+        first_day_of_month = today - timedelta(days = int(today.strftime("%d"))-1)
+
+        #  last_day_of_prev_month = first_day_of_month - timedelta(days=1)
+
+        #  if first_day_of_month == :
+
         if monthcal[0][0].month == today.month:
             start_index = 1 
         else:
             start_index = 0
         # week of month
         for counter, week in enumerate(monthcal, start=start_index):
-            if today in week and counter == 0:
-                week_of_month = 5 # this solves 99% of your issues
 
-
-                # if last_month[0][0].month == monthcal[0][0].month:
-                #     start_index_last = 1
-                # else:
-                #     start_index_last = 0
-
-                # last_month_list = list(enumerate(last_month, start=start_index_last))
-                # # print(last_month_list[-1][0], "\n")
-                # week_of_month = last_month_list[-1][0]
-
-
+            if today in week and counter == 0 and today.month != 3:
+                week_of_month = 5 
+            # if I am in march and march starts on a monday return 5 else return 4
+            elif today in week and counter == 0 and today.month == 3: 
+                # check to see if the first day of month is a sunday 
+                if first_day_of_month.strftime("%a") == "Mon":
+                    week_of_month = 4
+                else:
+                    week_of_month = 5
+                    
 
             elif today in week:
-                week_of_month = counter 
+                week_of_month = counter
 
 
 
