@@ -8,7 +8,7 @@ import time
 
 def test_method(test_file):
     ## greates a list of datetime objects for the specified range. To print them formatted us strformat
-    start = datetime.datetime.strptime("1900-01-01", "%Y-%m-%d")
+    start = datetime.datetime.strptime("2000-01-01", "%Y-%m-%d")
     end = datetime.datetime.strptime("2020-12-31", "%Y-%m-%d")
 
     # end = datetime.datetime.strptime("2019-02-01", "%Y-%m-%d")

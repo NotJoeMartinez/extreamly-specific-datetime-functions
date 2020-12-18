@@ -15,9 +15,21 @@ def test_day_range(month):
 def test_month_range():
     for month in range(1,3):
         test_day_range(month)
-        # print(Process(foo).get_month_of_process(), foo.strftime("%b, %-d"))
+        print(Process(foo).get_month_of_process(), foo.strftime("%b, %-d"))
 
 def test_year_range():
     foo = dt.datetime(2014,1,1)
     print(Process(foo).get_start_date_of_process(), foo.strftime("%Y-%m-%d"))
+
+def test():
+    for i in range(1, 31):
+        foo = dt.datetime(2018,1,i)
+        print(Process(foo).get_month_day_of_process(), foo.strftime("%Y-%m-%d"))
+
+    for i in range(1, 30):
+            foo = dt.datetime(2018,2,i)
+            print(Process(foo).get_month_day_of_process(), foo.strftime("%Y-%m-%d"))
+
+
+test()
 

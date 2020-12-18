@@ -204,7 +204,7 @@ class Process:
 
         return month_map[self.get_month_of_process()]
 
-    def get_month_week_of_process(self):
+    def get_month_week_of_process(self, return_week=False, return_last=False):
         """
         This is funky. A (integer?) starting with the monthOfProcess  value as the first 1-2 digits 
         and ending with a modified calendarWeekOfMonth as the last 2 digits. Take for 
@@ -225,12 +225,10 @@ class Process:
         
         week_of_month = "error"
         
-        #  logging.basicConfig(filename='debug.log', filemode='w', level=logging.DEBUG)
         # determine if the month starts on a sunday
         first_day_of_month = today - timedelta(days = int(today.strftime("%d"))-1)
         last_day_of_prev_month = first_day_of_month - timedelta(days=1)
 
-        #  if first_day_of_month == :
         if monthcal[0][0].month == today.month:
             start_index = 1 
         else:
@@ -254,7 +252,8 @@ class Process:
                 week_of_month = counter
 
        
-        
+        if return_week == True:
+            return week_of_month
         # month of process
         month_of_process = self.get_month_of_process()
 
@@ -275,37 +274,41 @@ class Process:
          (2nd "month of process", 26th day since the month started). The following day 11/1/2019 has a value of 234. 
          I'm guessing the formula for this saw this was a Friday of Week 5 and said the day value must then be 34 
          (4 full weeks + 6 days = 34).
-        """
 
+         These all end at 35
+        """
         today = self.date
         year = today.year
-        month = today.month
+        month = today.month 
 
+
+        # make month calenda    
         c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
         monthcal = c.monthdatescalendar(year,month)
+        
+        dom = today.date() - monthcal[0][0]
 
-        first_day_of_month = ''
-        fweek_index = 0
-        while True:
-            if monthcal[0][fweek_index].month == today.month:
-                first_day_of_month = monthcal[0][fweek_index]
-                break
-            else:
-                fweek_index += 1
+        # get operation specific varable from monthWeekOfProcess
+        # week_of_month = self.get_month_week_of_process(return_week=True)
+        # last_start = self.get_month_week_of_process(return_last=True)
 
+        # if the week of month is a 5 return the diffence of today and monthcal 
+        # if week_of_month == 5:
+        #    month_day_of_process = today.date() - monthcal[0][0] 
 
-        first_day_of_month = datetime.datetime.combine(first_day_of_month, datetime.datetime.min.time())
-
-        day_of_month = today - first_day_of_month
-
-
+        # elif week_of_month < 5:
+            # this should only be access within this if statment cuz the value of monthcal[x][x] is subjective 
+            # first_month_day_of_process = monthcal[0][0]
 
 
-
+        # day_of_month = today - first_day_of_month
 
         month_of_process = self.get_month_of_process()
 
-        return "{}{}".format(month_of_process,day_of_month.days)
+        if dom.days < 10:
+            return "{}0{}".format(month_of_process,dom.days)
+        else:
+            return "{}{}".format(month_of_process,dom.days)
 
 
     def get_month_week_day_of_process(self):
