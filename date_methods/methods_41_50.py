@@ -34,5 +34,8 @@ def is_leap_year(date):
 def monthWeekOfProcess(date):
     return Process(date).get_month_week_of_process() 
 
+def monthDayOfProcess(date):
+    return Process(date).get_month_day_of_process()
+
 def processYear(date):
     return Process(date).get_process_year()

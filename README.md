@@ -42,7 +42,7 @@
 - [x] dayOfProcess 42
 - [x] monthOfProcess 43
 - [x] monthNameOfProcess 44
-- [ ] monthWeekOfProcess 45
+- [x] monthWeekOfProcess 45
 - [ ] monthDayOfProcess 46
 - [ ] monthWeekDayOfProcess 47
 - [x] isLeapYear 48

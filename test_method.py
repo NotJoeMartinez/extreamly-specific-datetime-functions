@@ -25,7 +25,7 @@ def test_method(test_file):
     def make_stuff(file, dates_generated): 
         for date in dates_generated:
             with open(file, 'a') as f:
-                foo = date_methods.monthOfProcess(date)
+                foo = date_methods.monthDayOfProcess(date)
                 full_date = date.strftime("%Y-%m-%d") 
                 f.write(str(foo)+"," +str(full_date)+ "\n")
                 # else:

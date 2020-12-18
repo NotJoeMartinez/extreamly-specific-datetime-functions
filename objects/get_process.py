@@ -261,8 +261,58 @@ class Process:
         # if month_of_process == 13:
 
         # find the index of the current date within this 2D array
-        return "{}{}".format(month_of_process,week_of_month)
+        return "{}0{}".format(month_of_process,week_of_month)
 
+
+    
+    def get_month_day_of_process(self):
+        """
+         This is also funky. This is starts with the monthOfProcess value and ends with a value counting 
+         days within that month. In general, this counts days up from 1 whenever "monthOfProcess" resets to 1. 
+         However, this does not cleanly count up from 1 once we get to the end of the month and the start of a 
+         new month. It seems a formula for this column is based on the week calculated by "monthWeekOfProcess". 
+         Using our example before of October 2019 - November 2019: 10/31/2019 has an expected value of 226 
+         (2nd "month of process", 26th day since the month started). The following day 11/1/2019 has a value of 234. 
+         I'm guessing the formula for this saw this was a Friday of Week 5 and said the day value must then be 34 
+         (4 full weeks + 6 days = 34).
+        """
+
+        today = self.date
+        year = today.year
+        month = today.month
+
+        c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
+        monthcal = c.monthdatescalendar(year,month)
+
+        first_day_of_month = ''
+        fweek_index = 0
+        while True:
+            if monthcal[0][fweek_index].month == today.month:
+                first_day_of_month = monthcal[0][fweek_index]
+                break
+            else:
+                fweek_index += 1
+
+
+        first_day_of_month = datetime.datetime.combine(first_day_of_month, datetime.datetime.min.time())
+
+        day_of_month = today - first_day_of_month
+
+
+
+
+
+
+        month_of_process = self.get_month_of_process()
+
+        return "{}{}".format(month_of_process,day_of_month.days)
+
+
+    def get_month_week_day_of_process(self):
+        """
+         This is monthWeekOfProcess with 2 digits at the end representing calendarDayOfWeek.
+        """
+    
     def get_process_year(self):
         """
          This is a 4 digit year representing the year of the fall term for which we are signing up students. 
@@ -281,22 +331,3 @@ class Process:
             return today.year + 1
         else:
             return today.year
-    
-    def get_month_day_of_process(self):
-        """
-         This is also funky. This is starts with the monthOfProcess value and ends with a value counting 
-         days within that month. In general, this counts days up from 1 whenever "monthOfProcess" resets to 1. 
-         However, this does not cleanly count up from 1 once we get to the end of the month and the start of a 
-         new month. It seems a formula for this column is based on the week calculated by "monthWeekOfProcess". 
-         Using our example before of October 2019 - November 2019: 10/31/2019 has an expected value of 226 
-         (2nd "month of process", 26th day since the month started). The following day 11/1/2019 has a value of 234. 
-         I'm guessing the formula for this saw this was a Friday of Week 5 and said the day value must then be 34 
-         (4 full weeks + 6 days = 34).
-        """
-        self.get_month_of_process()
-
-
-    def get_month_week_day_of_process(self):
-        """
-         This is monthWeekOfProcess with 2 digits at the end representing calendarDayOfWeek.
-        """
