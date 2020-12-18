@@ -154,7 +154,6 @@ class Process:
         delta1 = today.month + 4
         delta2 = today.month - start.month
 
-
         if today < start: 
             # if self.is_in_first_calweek() and today.month != 9:
             if self.is_in_first_calweek(): 

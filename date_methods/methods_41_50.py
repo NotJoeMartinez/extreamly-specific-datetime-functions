@@ -8,6 +8,8 @@ from objects.get_process import Process
 
 feilds = ["quarterMonth","dayOfProcess","monthOfProcess","monthNameOfProcess","monthWeekOfProcess",
 "monthDayOfProcess","monthWeekDayOfProcess","isLeapYear","processYear","startDateOfProcess"]
+# feilds = ["quarterMonth","dayOfProcess","monthOfProcess","monthNameOfProcess","monthWeekOfProcess",
+# "monthDayOfProcess","isLeapYear","processYear","startDateOfProcess"]
 
 
 def quarterMonth(date):
@@ -22,13 +24,13 @@ def dayOfProcess(date):
 def monthOfProcess(date):
     return Process(date).get_month_of_process()
 
-def start_date_of_process(date):
+def startDateOfProcess(date):
     return Process(date).get_start_date_of_process()
 
 def monthNameOfProcess(date):
     return Process(date).get_month_name_of_process()
 
-def is_leap_year(date):
+def isLeapYear(date):
     return Process(date).check_leap()
 
 def monthWeekOfProcess(date):
@@ -36,6 +38,9 @@ def monthWeekOfProcess(date):
 
 def monthDayOfProcess(date):
     return Process(date).get_month_day_of_process()
+
+def monthWeekDayOfProcess(date):
+    pass
 
 def processYear(date):
     return Process(date).get_process_year()
