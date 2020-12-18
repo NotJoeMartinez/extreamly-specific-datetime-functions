@@ -25,21 +25,21 @@ class Process:
             year = y ; month = 9
 
             # creates a calendar object, sets first weekday to monday
-            c = calendar.Calendar(firstweekday=0) 
+            c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
 
             # this returns an itterator 
             monthcal = c.monthdatescalendar(year,month)
 
             # get the third monday        
             third_mon = [day for week in monthcal for day in week if \
-                    day.weekday() == calendar.MONDAY and \
+                    day.weekday() == calendar.SUNDAY and \
                     day.month == month][2]
 
             # turn thrid_mon into a datetime object  
-            mon = datetime.datetime.combine(third_mon, datetime.datetime.min.time())
+            sun = datetime.datetime.combine(third_mon, datetime.datetime.min.time())
 
-            # get wednesday by adding two 
-            # wed = mon + datetime.timedelta(days=2)
+            # get monday by adding one day 
+            mon = sun + timedelta(days=1)
 
             # check if optional arg is non null 
             if return_obj != "":
@@ -110,7 +110,6 @@ class Process:
     def is_in_first_calweek(self):
         """
         given a date determine if it is in the first week of month STARTING SUNDAY 
-
         """
         date = self.date
 
@@ -119,7 +118,6 @@ class Process:
         c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
         # creates a 2D array of datetime objects for all week days in the month 
         monthcal = c.monthdatescalendar(year,month)
-
         # get all sundays of the current month and save them to first_sun 
         first_sun = []
         for week in monthcal:
@@ -129,14 +127,20 @@ class Process:
 
         # turn first_sun into a datetime object  
         sun = datetime.datetime.combine(first_sun[0], datetime.datetime.min.time())
+        # mon = sun + timedelta(days=1)
 
         if self.date < sun:
             return True 
         else: 
             return False
 
+
     def get_month_of_process(self):
         """
+         This is funky. This starts at 1 after the process start date identifed from "dayOfProcess" above. So, those dates in September
+         will be listed as 1. This does not increment to 2 until calendarWeekOfMonth resets to 1 in October. Once calendarWeekOfMonth
+         resets to 1 for the following September, this will have a value of "13" for all days before the next start of process date
+
         if today is less than the start date of the process for this year,
         check if today it is in the first calendar week of the current month, 
         if today is in the first calendar week of the current month,
@@ -150,19 +154,20 @@ class Process:
         delta1 = today.month + 4
         delta2 = today.month - start.month
 
-        if today < start:
+
+        if today < start: 
             # if self.is_in_first_calweek() and today.month != 9:
             if self.is_in_first_calweek(): 
                 return delta1 - 1 
             else:
                 return delta1 
 
-        elif today > start and today.month == 9:
-            # if it's greater than start date and in september return 1
-            return 1
-            # if it's greater than start date but not in september return delta2
-        elif today == start:
-            return 1
+        if today.month == 9:
+            if today < start:
+                return 13
+            else:
+                return 1
+ 
 
         elif today > start: 
 
@@ -226,7 +231,6 @@ class Process:
         last_day_of_prev_month = first_day_of_month - timedelta(days=1)
 
         #  if first_day_of_month == :
-
         if monthcal[0][0].month == today.month:
             start_index = 1 
         else:
@@ -249,13 +253,15 @@ class Process:
             elif today in week:
                 week_of_month = counter
 
-
-
+       
+        
         # month of process
         month_of_process = self.get_month_of_process()
-        
+
+        # if month_of_process == 13:
+
         # find the index of the current date within this 2D array
-        return "{}0{}".format(month_of_process,week_of_month)
+        return "{}{}".format(month_of_process,week_of_month)
 
     def get_process_year(self):
         """
@@ -286,4 +292,11 @@ class Process:
          (2nd "month of process", 26th day since the month started). The following day 11/1/2019 has a value of 234. 
          I'm guessing the formula for this saw this was a Friday of Week 5 and said the day value must then be 34 
          (4 full weeks + 6 days = 34).
+        """
+        self.get_month_of_process()
+
+
+    def get_month_week_day_of_process(self):
+        """
+         This is monthWeekOfProcess with 2 digits at the end representing calendarDayOfWeek.
         """
