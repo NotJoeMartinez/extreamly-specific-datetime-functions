@@ -24,14 +24,8 @@ def dayOfProcess(date):
 def monthOfProcess(date):
     return Process(date).get_month_of_process()
 
-def startDateOfProcess(date):
-    return Process(date).get_start_date_of_process()
-
 def monthNameOfProcess(date):
     return Process(date).get_month_name_of_process()
-
-def isLeapYear(date):
-    return Process(date).check_leap()
 
 def monthWeekOfProcess(date):
     return Process(date).get_month_week_of_process() 
@@ -40,7 +34,15 @@ def monthDayOfProcess(date):
     return Process(date).get_month_day_of_process()
 
 def monthWeekDayOfProcess(date):
-    pass
+    return "broken"
+ 
+def isLeapYear(date):
+    return Process(date).check_leap()
 
 def processYear(date):
     return Process(date).get_process_year()
+
+def startDateOfProcess(date):
+    return Process(date).get_start_date_of_process()
+
+
