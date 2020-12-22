@@ -14,8 +14,6 @@ class Process:
     
     def get_start_date_of_process(self, return_obj="", return_last=""): 
             date = self.date
-
-
             # get year
             y = date.year
 
@@ -276,40 +274,21 @@ class Process:
 
          These all end at 35
         """
+        # “Day of Process”  = (“Week of Process” – 1) * 7 + “CalendarDayOfWeek”
         today = self.date
         year = today.year
         month = today.month 
-
-        # “Day of Process”  = (“Week of Process” – 1) * 7 + “CalendarDayOfWeek”
-
-        # make month calenda    
-        c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
-        # creates a 2D array of datetime objects for all week days in the month 
-        monthcal = c.monthdatescalendar(year,month)
-
-        dom = today.date() - monthcal[0][0]
-
-        # get operation specific varable from monthWeekOfProcess
-        week_of_month = self.get_month_week_of_process(return_week=True)
-        last_start = self.get_month_week_of_process(return_last=True)
-
-        # if the week of month is a 5 return the diffence of today and monthcal 
-        if week_of_month == 5:
-           month_day_of_process = today.date() - monthcal[0][0] 
-
-        elif week_of_month < 5:
-            # this should only be access within this if statment cuz the value of monthcal[x][x] is subjective 
-            first_month_day_of_process = monthcal[0][0]
-
-
-        # day_of_month = today - first_day_of_month
-
         month_of_process = self.get_month_of_process()
 
-        if dom.days < 10:
-            return "{}0{}".format(month_of_process,dom.days)
+        cal_day_of_week = int(self.date.strftime("%w")) + 1
+
+        
+        week_of_process = (self.get_month_week_of_process(True) - 1) * 7 +  cal_day_of_week
+
+        if week_of_process < 10:
+            return "{}0{}".format(month_of_process,week_of_process)
         else:
-            return "{}{}".format(month_of_process,dom.days)
+            return "{}{}".format(month_of_process,week_of_process)
 
 
     def get_month_week_day_of_process(self):

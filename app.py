@@ -2,6 +2,8 @@ import csv, os, datetime
 import date_methods
 import merge as m 
 
+# goal "2000-01-01" - "2100-12-31" 
+# test agaist historcial "1900-01-01" - "2019-12-31"
 # when chaging, 33, 47, 43
 def write_to_final(filename, method, test=False):
 

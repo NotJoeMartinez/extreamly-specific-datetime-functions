@@ -15,6 +15,7 @@ def test_method(true_file, my_file):
     dates_generated = [start + datetime.timedelta(days=x) for x in range(0, (end-start).days)]
 
     # remove existing csv files 
+    print("Removing test files from {} if it exists".format(my_file))
     os.system("rm {}".format(my_file))
 
     # Test function below 
@@ -31,6 +32,7 @@ def test_method(true_file, my_file):
                
     # call make_stuff()
     make_stuff(file,dates_generated)
+    print("File generated running vimdiff")
     # run vimdiff against new csv generate
     os.system("vimdiff {} {}".format(true_file, my_file))
 

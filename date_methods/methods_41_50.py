@@ -31,8 +31,8 @@ def monthWeekOfProcess(date):
     return Process(date).get_month_week_of_process() 
 
 def monthDayOfProcess(date):
-    # return Process(date).get_month_day_of_process()
-    return "broken"
+    return Process(date).get_month_day_of_process()
+    # return "broken"
 
 def monthWeekDayOfProcess(date):
     return Process(date).get_month_week_day_of_process() 
