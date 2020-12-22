@@ -8,12 +8,7 @@ def write_to_final(filename, method, test=False):
     if (test==True):
         ## greates a list of datetime objects for the specified range. To print them formatted us strformat
         start = datetime.datetime.strptime("2000-01-01", "%Y-%m-%d")
-        end = datetime.datetime.strptime("2020-12-31", "%Y-%m-%d")
-
-    elif(test=="month"):
-        start = datetime.datetime.strptime("2019-01-01", "%Y-%m-%d")
-        end = datetime.datetime.strptime("2019-02-01", "%Y-%m-%d")
-        filename = "month.csv"
+        end = datetime.datetime.strptime("2100-12-31", "%Y-%m-%d")
 
     else:
         start = datetime.datetime.strptime("2021-01-01", "%Y-%m-%d")

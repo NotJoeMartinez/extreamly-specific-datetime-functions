@@ -34,5 +34,4 @@ def test_method(true_file, my_file):
     # run vimdiff against new csv generate
     os.system("vimdiff {} {}".format(true_file, my_file))
 
-
 test_method("csvs/tests/col46/true_46.csv","csvs/tests/col46/my_try.csv")

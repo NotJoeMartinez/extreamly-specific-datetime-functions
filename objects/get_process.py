@@ -280,24 +280,26 @@ class Process:
         year = today.year
         month = today.month 
 
+        # “Day of Process”  = (“Week of Process” – 1) * 7 + “CalendarDayOfWeek”
 
         # make month calenda    
         c = calendar.Calendar(firstweekday=calendar.SUNDAY) 
+        # creates a 2D array of datetime objects for all week days in the month 
         monthcal = c.monthdatescalendar(year,month)
-        
+
         dom = today.date() - monthcal[0][0]
 
         # get operation specific varable from monthWeekOfProcess
-        # week_of_month = self.get_month_week_of_process(return_week=True)
-        # last_start = self.get_month_week_of_process(return_last=True)
+        week_of_month = self.get_month_week_of_process(return_week=True)
+        last_start = self.get_month_week_of_process(return_last=True)
 
         # if the week of month is a 5 return the diffence of today and monthcal 
-        # if week_of_month == 5:
-        #    month_day_of_process = today.date() - monthcal[0][0] 
+        if week_of_month == 5:
+           month_day_of_process = today.date() - monthcal[0][0] 
 
-        # elif week_of_month < 5:
+        elif week_of_month < 5:
             # this should only be access within this if statment cuz the value of monthcal[x][x] is subjective 
-            # first_month_day_of_process = monthcal[0][0]
+            first_month_day_of_process = monthcal[0][0]
 
 
         # day_of_month = today - first_day_of_month
@@ -314,6 +316,9 @@ class Process:
         """
          This is monthWeekOfProcess with 2 digits at the end representing calendarDayOfWeek.
         """
+        cal_day_of_week = int(self.date.strftime("%w")) + 1
+
+        return "{}0{}".format(self.get_month_week_of_process(), cal_day_of_week)
     
     def get_process_year(self):
         """
