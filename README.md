@@ -1,3 +1,18 @@
+## This was intended to replace excel formulas for a COGNOS date dimention table 
+
+Runing the following to produce a csv file with century of rows with 50 columns of formatted date time stamps.
+```python
+pip install -r requirements.txt
+```
+
+```python
+python3 app.py
+```
+The deffinitons for each of these columns can be found in deffs.md
+
+*** 
+
+TODO: 
 - [x] dateId 1
 - [x] dateType 2 
 - [x] fullDate 3
